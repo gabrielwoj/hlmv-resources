@@ -1,0 +1,1 @@
+Removes references to hlp_forearm_L and hlp_forearm_R bones on Scout's, Demoman's and Heavy's normal and HWM models, to fix an issue with rendering with cosmetics that uses said bones.

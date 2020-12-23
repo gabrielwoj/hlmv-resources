@@ -1,0 +1,3 @@
+If you are having trouble configuring your HLMV settings, you can try using this pre-configured CFG file for HLMV, which should maximize graphics for all graphic cards.
+
+In case it doesn't work, it's probably because your graphics card ID is not on the list. Read the "dxsupport.cfg" section on this link (the link "Graphics card settings" section is important and worthy a read too!): https://wiki.teamfortress.com/wiki/Help:Model_Viewer#Graphics_card_settings
