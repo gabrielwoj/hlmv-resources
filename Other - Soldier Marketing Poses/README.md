@@ -6,4 +6,4 @@ The mod can be found here: http://tf2.gamebanana.com/skins/86800
 
 This pack does not have intention to redistribute the pack by Populus89 (as it only contains the animation files on it), only for sharing the old Marketing Poses that TF2 had.
 
-To go back to the original/default animations for TF2, remove the "Other - Soldier Marketing Poses" folder from your custom folder.
+To go back to the original/default animations for TF2, remove the "Other - Soldier Marketing Poses" folder/.vpk from your custom folder.
