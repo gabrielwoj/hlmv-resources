@@ -30,4 +30,4 @@ Other - Soldier Marketing Poses
 
 ---
 
-.zip files of each pack will be shared via "Releases", you can extract them in the same folder as the ones above.
+.vpk/.zip files of each pack (with their latest revisions) will be shared via "Releases", you can extract them in the same folder as the ones above.
