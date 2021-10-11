@@ -1,0 +1,1 @@
+This changes the default blue sky background on HLMV to a full white background (RGB 255 255 255), this makes making images easier. You can toggle the background ON or OFF by pressing Ctrl+B.

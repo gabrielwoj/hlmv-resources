@@ -9,11 +9,12 @@ Stuff for the Official TF2 Wiki, or even other Source-related games.
 
 * These folder packs goes in "Steam\steamapps\common\Team Fortress 2\tf\custom":
 
-HLMV - Black Background<br>
 HLMV - Cubemap Fix<br>
 HLMV - Dummied Out hlp_bones<br>
 HLMV - Fire Overlay Fix<br>
 HLMV - Missing Folders Fix<br>
+HLMV - Skybox Background - Black<br>
+HLMV - Skybox Background - White
 
 ---
 
@@ -25,9 +26,19 @@ HLMV - Gray Cornea Texture Fix
 
 * These folder packs are optional and are not needed to fix issues on HLMV:
 
+Other - Deployed Thermal Thruster<br>
 Other - Gray Mannequin Bodygroups<br>
-Other - Soldier Marketing Poses
+Other - Holdable Big Kill<br>
+Other - Soldier Marketing Poses<br>
+Other - The Original Position Fix on Selection Screen Pose<br>
+Other - Wandering Wraith Removed Spot
 
 ---
 
-.vpk/.zip files of each pack (with their latest revisions) will be shared via "Releases", you can extract them in the same folder as the ones above.
+* This folder pack is optional to only TFMV (a program that makes model loading easier, as well letting you set styles, as well paints, bodygroups, etc.).
+
+TFMV - Invisible tfmv_bg.mdl
+
+---
+
+"Releases" can be found on the "VPKs - ZIPs -Releases" folder.

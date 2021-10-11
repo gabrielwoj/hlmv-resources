@@ -1,0 +1,1 @@
+Removes the small red/blue spot on the model, leaving only the skull itself. This was the model used to make the Paint Variant Table on the Wiki.
