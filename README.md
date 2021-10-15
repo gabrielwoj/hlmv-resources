@@ -29,6 +29,7 @@ HLMV - Gray Cornea Texture Fix
 Other - Deployed Thermal Thruster<br>
 Other - Gray Mannequin Bodygroups<br>
 Other - Holdable Big Kill<br>
+Other - Sniper with Only Head and Hat Visible<br>
 Other - Soldier Marketing Poses<br>
 Other - The Original Position Fix on Selection Screen Pose<br>
 Other - Wandering Wraith Removed Spot
