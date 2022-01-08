@@ -1,4 +1,4 @@
-Original made by -Insert original author here, I don't actually know-.
+Original made by NeoDement.
 
 This is not needed to work on images for the Wiki, and it doesn't fix anything on HLMV. This is a pack that has each class model have several types of bodygroups, as well completely gray and invisible textures. These were used to make the Item Icons in Shugo style.
 
