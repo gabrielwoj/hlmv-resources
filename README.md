@@ -34,6 +34,12 @@ Other - The Original Position Fix on Selection Screen Pose<br>
 
 ---
 
+* These folder packs are related to materials/models for Paint Variants (on the "Template:Painted variants/Tutorial/Rotations" page of the wiki):
+
+HLMV Rotations Page - Cotton Head Colors (Pyro, Medic, Spy)
+
+---
+
 * This folder pack is optional to only TFMV (a program that makes model loading easier, as well letting you set styles, as well paints, bodygroups, etc.).
 
 TFMV - Invisible tfmv_bg.mdl

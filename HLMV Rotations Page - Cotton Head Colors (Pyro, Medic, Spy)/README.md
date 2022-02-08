@@ -1,0 +1,1 @@
+This will make the Scout model to load the colors from the Pyro, Medic and Spy variations of the Cotton Head. The reason I did a model replacement is that it's easier to make paint variant previews via TFMV this way. The only other way around this would be manually putting each paint value with the correct materials that Pyro, Med and Spy uses.
