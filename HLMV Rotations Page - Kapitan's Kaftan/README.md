@@ -1,0 +1,1 @@
+This will remove some vertices from the back of the cosmetic so it doesn't show up around the collar region when using the provided Rotation values.
