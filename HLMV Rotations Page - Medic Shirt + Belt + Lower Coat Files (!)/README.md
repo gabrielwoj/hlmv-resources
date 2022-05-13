@@ -1,0 +1,1 @@
+This pack results in noticeable texture color loss (which happens for any HLMV Rotation Page materials that use custom textures to hide certain areas of a class model). It's recommended to use "Other - Gray Mannequin Bodygroups"'s Medic model instead, but I decided to keep these files just as an archive.
