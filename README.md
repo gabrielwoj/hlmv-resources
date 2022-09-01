@@ -36,17 +36,18 @@ Other - The Original Position Fix on Selection Screen Pose<br>
 
 * These folder packs are related to materials/models for Paint Variants (on the "Template:Painted variants/Tutorial/Rotations" page of the wiki):
 
-HLMV Rotations Page - Cotton Head Colors (Pyro, Medic, Spy)
-HLMV Rotations Page - Engineer No Legs Files
-HLMV Rotations Page - Engineer Shirt + White Shirt + Belt + Pocket Files
-HLMV Rotations Page - Engineer Shirt + White Shirt Files
-HLMV Rotations Page - Kapitan's Kaftan
-HLMV Rotations Page - Medic Shirt + Belt + Lower Coat Files (!)
-HLMV Rotations Page - Scout Head + Dogtags Files
-HLMV Rotations Page - Scout Shirt + Dogtags Files
-HLMV Rotations Page - Shogun's Shoulder Guard Files
-HLMV Rotations Page - Sniper Shirt + Head + Hat Files
-HLMV Rotations Page - Sniper Shirt + White Shirt (!)
+HLMV Rotations Page - Cotton Head Colors (Pyro, Medic, Spy)<br>
+HLMV Rotations Page - Engineer No Legs Files<br>
+HLMV Rotations Page - Engineer Shirt + White Shirt + Belt + Pocket Files<br>
+HLMV Rotations Page - Engineer Shirt + White Shirt Files<br>
+HLMV Rotations Page - Kapitan's Kaftan<br>
+HLMV Rotations Page - Medic Shirt + Belt + Lower Coat Files (!)<br>
+HLMV Rotations Page - Pyro Shark<br>
+HLMV Rotations Page - Scout Head + Dogtags Files<br>
+HLMV Rotations Page - Scout Shirt + Dogtags Files<br><br>
+HLMV Rotations Page - Shogun's Shoulder Guard Files<br>
+HLMV Rotations Page - Sniper Shirt + Head + Hat Files<br>
+HLMV Rotations Page - Sniper Shirt + White Shirt (!)<br>
 HLMV Rotations Page - Surgeon's Sidearms Files
 
 ---
