@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\props_millstone/hanginglight001_blue"
+	"$selfillum" 1
+	$selfillummask "models\props_millstone/hanginglight001_blue_on"
+}
