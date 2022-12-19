@@ -20,7 +20,7 @@ Use these values:<br>
 Rot: (29.250904 -39.080170 -23.849325)<br>
 Trans: (88.541016 -207.500000 -14.136154)
 
-Because of how this was achieved, the location of the main model, bomb_cart.mdl, had to be put very far away, as it was based on the exact values used on pl_bloodwater.<br>
+Because of how this was achieved, the location of the main model, bomb_cart.mdl, had to be put very far away, as it was based on the exact values used on pl_rumford_event.<br>
 Be very gentle when rotating your model, as it will rotate more than usual. You can move the model as normal, however.
 
 Once done, make sure to delete the ".vpk" or related files from your "tf/custom", or it will cause problems with maps that uses these props.
