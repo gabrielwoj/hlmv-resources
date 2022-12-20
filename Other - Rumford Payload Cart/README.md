@@ -1,6 +1,6 @@
 Instructions:
 
-Load props/trainyard/bomb_cart.mdl as your main model.
+Load props_trainyard/bomb_cart.mdl as your main model.
 
 Load these as submodels:
 

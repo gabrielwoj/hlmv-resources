@@ -1,6 +1,6 @@
 Instructions:
 
-Load props/trainyard/cart_base_separate.mdl as your main model.
+Load props_trainyard/cart_base_separate.mdl as your main model.
 
 Load these as submodels:
 
