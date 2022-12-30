@@ -1,0 +1,1 @@
+Due to how the texture is mapped to the model, some vertices appear floating around where Pyro's pockets usually are. Sadly, it seems that part of the pocket is also used by Pyro's tank from the back, and can't be easily removed. You'll have to manually remove it with an image editor program after taking screenshots on the model viewer.
