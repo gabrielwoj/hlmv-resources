@@ -1,0 +1,2 @@
+This will add "$nocull" strings to the materials used for the Barefoot Brawler.
+It also includes the "HLMV Rotations Page - Demoman Legs + Accessories Files", which was the one used for the paint variants for this item.
