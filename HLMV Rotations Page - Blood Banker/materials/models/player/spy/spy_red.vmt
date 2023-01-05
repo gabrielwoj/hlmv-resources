@@ -1,19 +1,21 @@
 "VertexLitGeneric"
+
 {
-	"$basetexture" "models\player\sniper\sniper_red"
-	"$bumpmap" "models\player\sniper\sniper_normal"
-	"$detail" "effects/tiledfire/fireLayeredSlowTiled512.vtf"	
+	"$basetexture" "models\player\spy\spy_red"
+	"$bumpmap" "models/player/spy/spy_normal"
+			"$detail" "effects/tiledfire/fireLayeredSlowTiled512.vtf"	
 	"$detailscale" "5"
 	"$detailblendfactor" .01
 	"$detailblendmode" 6
+
 
 
 	"$yellow" "0"
 	"$one" "1"
 
 	"$alphatest" "1"
-	"$nocull" "1"	
-	
+	"$nocull" "1"		
+
 	"$phong" "1"
 	"$phongexponent" "20"
 	"$phongboost" ".3"	
@@ -28,8 +30,6 @@
 
 	// Cloaking
 	"$cloakPassEnabled" "1"
-
-	"360?$color2" "[ 0.7 0.7 0.7 ]"
 
 	"Proxies"
 	{
