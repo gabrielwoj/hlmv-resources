@@ -1,0 +1,2 @@
+This will add "$nocull" strings to the materials used for the Bountiful Bow.
+It also includes the "HLMV Rotations Page - Spy Shirt + Collar Materials", which was the one used for the paint variants for this item.
