@@ -1,0 +1,18 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/props_gameplay/resupply_locker_pyro"
+	"$basemapalphaphongmask" "1"
+	"$phong" "1"
+	"$phongexponent" "50"
+	"$phongboost" ".5"	
+	"$phongfresnelranges"	"[.7 15 20]"
+	"$effect"					"1"
+	"$vertex_lit"				"1"
+	"$vertexcolor"			"$vertexcolor"
+	"$diffuse_white"			"0.9"
+	"$diffuse_base"				"0.0"					
+	"$gray_power"				"0.2"
+	"$gray_step"				"[ 0.0 1.0 ]"
+	"$lightmap_gradients"		"255"
+}
+
