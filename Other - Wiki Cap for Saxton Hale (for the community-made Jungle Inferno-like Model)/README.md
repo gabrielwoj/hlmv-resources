@@ -1,0 +1,1 @@
+Also paints the Wiki Cap based on his pants color.
