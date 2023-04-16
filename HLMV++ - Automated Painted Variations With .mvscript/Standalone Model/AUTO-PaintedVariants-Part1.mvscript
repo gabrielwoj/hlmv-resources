@@ -1,0 +1,289 @@
+"ModelViewerScript"
+{
+
+// -----------------------------------  //
+
+// WARNING //
+
+// BE WARY THAT BECAUSE THE PROGRAM TAKES 10ms PER TASK, THERE WILL BE A LOT OF FLASHING LIGHTS DUE TO HOW THE PROCESS OF MAKING TRANSPARENT IMAGES WORK.
+// FOR EACH PAINT VARIATION SCREENSHOT, THE PROGRAM WILL QUICKLY SWITCH FROM A BLACK BACKGROUND TO A WHITE BACKGROUND, THEN SWITCH TO THE NEXT PAINT VARIANT AND REPEAT THE PROCESS UNTIL IT'S DONE.
+// IF YOU HAVE "Photosensitive Epilepsy", PLEASE DO NOT USE THIS ".mvscript".
+// BE WARY THAT THE PROGRAM ITSELF DOES BLINK BETWEEN A BLACK BACKGROUND TO A WHITE BACKGROUND THEN BACK TO A BLACK BACKGROUND WHEN USING THE STANDARD "Options -> Make Screenshot..." OPTION, BUT BLINKS JUST ONCE.
+
+// -----------------------------------  //
+
+// Screenshots will be saved to: "Steam\steamapps\common\Team Fortress 2\bin" //
+
+// -----------------------------------  //
+
+	//Registry key name, but with slashes
+	"LoadModel"				"models\player\items\medic\medic_german_gonzila.mdl"
+
+	//merge1 value from Registry
+	//"LoadMergeModel" 		""
+
+	//bgColor value from Registry
+	"SetBGColor"			"0.250000 0.250000 0.250000 1.000000"
+
+	//Rot value from Registry
+	"SetCameraAngles"		"19.622055 -43.032928 -17.406704"
+
+	//Trans value from Registry
+	"SetCameraOrigin"		"19.335369 -1.250000 3.269499"
+
+	//lightrot value from Registry
+	"SetLightAngles"		"180.000000 0.000000 0.000000"
+	
+// -----------------------------------  //
+
+// START UNPAINTED VARIATION SCREENSHOT //
+
+// Unpainted RED //
+
+	"Screenshot"			"0 - Unpainted RED.tga"
+	
+//  END UNPAINTED VARIATION SCREENSHOT  //
+	
+// -----------------------------------  //
+	
+//  START PAINTED VARIANTS SCREENSHOTS  //
+
+// An Extraordinary Abundance of Tinge //
+	
+	"SetMatVars"
+	{
+	"$colortint_base" "[ 0.901961 0.901961 0.901961 ]"
+	}
+	"Screenshot"			"2 - (E6E6E6) - An Extraordinary Abundance of Tinge.tga"
+	
+// Color No. 216-190-216 //
+	
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.847059 0.745098 0.847059 ]"
+	}
+	"Screenshot"			"3 - (D8BED8) - Color No 216-190-216.tga"
+	
+// Peculiarly Drab Tincture //
+	
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.772549 0.686275 0.568627 ]"
+	}
+	"Screenshot"			"4 - (C5AF91) - Peculiarly Drab Tincture.tga"
+	
+// Aged Moustache Grey //
+	
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.494118 0.494118 0.494118 ]"
+	}
+	"Screenshot"			"5 - (7E7E7E) - Aged Moustache Grey.tga"
+	
+// A Distinctive Lack of Hue //
+	
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.078431 0.078431 0.078431 ]"
+	}
+	"Screenshot"			"6 - (141414) - A Distinctive Lack of Hue.tga"
+	
+// After Eight //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.176471 0.176471 0.141176 ]"
+	}
+	"Screenshot"			"7 - (2D2D24) - After Eight.tga"
+	
+// Radigan Conagher Brown //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.411765 0.301961 0.227451 ]"
+	}
+	"Screenshot"			"8 - (694D3A) - Radigan Conagher Brown.tga"
+
+// Ye Olde Rustic Colour //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.486275 0.423529 0.341176 ]"
+	}
+	"Screenshot"			"9 - (7C6C57) - Ye Olde Rustic Colour.tga"
+	
+// Muskelmannbraun //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.647059 0.458824 0.270588 ]"
+	}
+	"Screenshot"			"10 - (A57545) - Muskelmannbraun.tga"
+	
+// Mann Co Orange //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.811765 0.450980 0.211765 ]"
+	}
+	"Screenshot"			"11 - (CF7336) - Mann Co Orange.tga"
+	
+// Australium Gold //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.905882 0.709804 0.231373 ]"
+	}
+	"Screenshot"			"12 - (E7B53B) - Australium Gold.tga"
+	
+// The Color of a Gentlemann Business Pants //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.941177 0.901961 0.549020 ]"
+	}
+	"Screenshot"			"13 - (F0E68C) - The Color of a Gentlemann Business Pants.tga"
+	
+// Dark Salmon Injustice //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.913726 0.588235 0.478431 ]"
+	}
+	"Screenshot"			"14 - (E9967A) - Dark Salmon Injustice.tga"
+	
+// Pink as Hell //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 1.000000 0.411765 0.705882 ]"
+	}
+	"Screenshot"			"15 - (FF69B4) - Pink as Hell.tga"
+	
+// A Deep Commitment to Purple //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.490196 0.250980 0.443137 ]"
+	}
+	"Screenshot"			"16 - (7D4071) - A Deep Commitment to Purple.tga"
+	
+// Noble Hatter's Violet //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.317647 0.219608 0.290196 ]"
+	}
+	"Screenshot"			"17 - (51384A) - Noble Hatter's Violet.tga"
+	
+// A Color Similar to Slate //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.184314 0.309804 0.309804 ]"
+	}
+	"Screenshot"			"18 - (2F4F4F) - A Color Similar to Slate.tga"
+	
+// Zepheniah Greed //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.258824 0.309804 0.231373 ]"
+	}
+	"Screenshot"			"19 - (424F3B) - Zepheniah Greed.tga"
+	
+// Drably Olive //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.501961 0.501961 0.000000 ]"
+	}
+	"Screenshot"			"20 - (808000) - Drably Olive.tga"
+	
+// Indubitably Green //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.447059 0.619608 0.258824 ]"
+	}
+	"Screenshot"			"21 - (729E42) - Indubitably Green.tga"
+	
+// The Bitter Taste of Defeat and Lime //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.196078 0.803922 0.196078 ]"
+	}
+	"Screenshot"			"22 - (32CD32) - The Bitter Taste of Defeat and Lime.tga"
+	
+// A Mann's Mint //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.737255 0.866667 0.701961 ]"
+	}
+	"Screenshot"			"23 - (BCDDB3) - A Mann's Mint.tga"
+	
+// Waterlogged Lab Coat (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.658824 0.603922 0.549020 ]"
+	}
+	"Screenshot"			"24 - (A89A8C) - Waterlogged Lab Coat - RED.tga"
+	
+// Balaclavas Are Forever (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.231373 0.121569 0.137255 ]"
+	}
+	"Screenshot"			"26 - (3B1F23) - Balaclavas Are Forever - RED.tga"
+	
+// Team Spirit (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.721569 0.219608 0.231373 ]"
+	}
+	"Screenshot"			"28 - (B8383B) - Team Spirit - RED.tga"
+	
+// Operator's Overalls (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.282353 0.219608 0.219608 ]"
+	}
+	"Screenshot"			"30 - (483838) - Operator's Overalls - RED.tga"
+	
+// The Value of Teamwork (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.501961 0.188235 0.125490 ]"
+	}
+	"Screenshot"			"32 - (803020) - The Value of Teamwork - RED.tga"
+	
+// An Air of Debonair (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.396078 0.278431 0.250980 ]"
+	}
+	"Screenshot"			"34 - (654740) - An Air of Debonair - RED.tga"
+
+// Cream Spirit (RED) //
+
+	"SetMatVars"
+	{
+	"$colortint_base"		"[ 0.764706 0.423529 0.176471 ]"
+	}
+	"Screenshot"			"36 - (C36C2D) - Cream Spirit - RED.tga"
+	
+// -----------------------------------  //
+
+//   END PAINTED VARIANTS SCREENSHOTS   //
+	
+// -----------------------------------  //
+
+}
