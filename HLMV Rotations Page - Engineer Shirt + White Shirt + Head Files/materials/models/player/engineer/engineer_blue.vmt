@@ -8,6 +8,7 @@
 	"$detailblendmode" 6
 
 	"$alphatest" "1"
+	"$nocull" "1"	
 	
 	
 	"$yellow" "0"
