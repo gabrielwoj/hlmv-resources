@@ -1,0 +1,1 @@
+This is the "heavy_weight_room_warmer_files", but without the old Weight Room Warmer's model. It's used in several Heavy shirt items, so I decided to re-upload without those files.
