@@ -12,7 +12,7 @@ BE WARY THAT THE PROGRAM ITSELF DOES BLINK BETWEEN A BLACK BACKGROUND TO A WHITE
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Open HLMV++, maximize it, go to "File -> Run .mvscript", and open "AUTO-PaintedVariants-Part1.mvscript".
+Open HLMV++, maximize it, load your model as usual, go to "File -> Run .mvscript", and open "AUTO-PaintedVariants-Part1.mvscript".
 
 Then, for BLU variants, go to the "Model" tab, and switch the "Skin 1" to "Skin 2", then run "AUTO-PaintedVariants-Part2.mvscript" (via the same way as Part1).
 

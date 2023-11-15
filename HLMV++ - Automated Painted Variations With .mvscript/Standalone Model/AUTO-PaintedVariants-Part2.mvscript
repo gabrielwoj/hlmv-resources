@@ -20,7 +20,9 @@
 // -----------------------------------  //
 
 	//Registry key name, but with slashes
-	"LoadModel"				"models\player\items\medic\medic_german_gonzila.mdl"
+	//"LoadModel"				"models\player\items\medic\medic_german_gonzila.mdl"
+	
+	//"LoadModel" is not a necessary step in the process, so it's going to be commented for now as it's not necessary with the current method.
 
 	//merge1 value from Registry
 	//"LoadMergeModel" 		""
