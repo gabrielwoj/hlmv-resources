@@ -28,16 +28,22 @@
 	//"LoadMergeModel" 		""
 
 	//bgColor value from Registry
-	"SetBGColor"			"0.250000 0.250000 0.250000 1.000000"
+	"SetBGColor"			"0.000000 0.000000 0.000000 1.000000"
 
 	//Rot value from Registry
-	"SetCameraAngles"		"19.622055 -43.032928 -17.406704"
+	//"SetCameraAngles"		"19.622055 -43.032928 -17.406704"
+	
+	//"SetCameraAngles" is not a necessary step in the process, so it's going to be commented for now as it's not necessary with the current method.
 
 	//Trans value from Registry
-	"SetCameraOrigin"		"19.335369 -1.250000 3.269499"
+	//"SetCameraOrigin"		"19.335369 -1.250000 3.269499"
+	
+	//"SetCameraOrigin" is not a necessary step in the process, so it's going to be commented for now as it's not necessary with the current method.
 
 	//lightrot value from Registry
-	"SetLightAngles"		"180.000000 0.000000 0.000000"
+	//"SetLightAngles"		"180.000000 0.000000 0.000000"
+	
+	//"SetLightAngles" is not a necessary step in the process, so it's going to be commented for now as it's not necessary with the current method.
 	
 // -----------------------------------  //
 
