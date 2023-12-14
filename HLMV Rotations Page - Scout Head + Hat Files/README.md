@@ -1,0 +1,1 @@
+This will keep only the hat visible alongside Scout's head, without his headset on.
