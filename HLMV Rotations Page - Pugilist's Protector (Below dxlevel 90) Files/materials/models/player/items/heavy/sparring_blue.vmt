@@ -19,6 +19,7 @@
 //	"$blendtintcoloroverbase" "1"   // between 0-1 determines how much blended by tinting vs. replacing the color
 
 	"$colortint_base" "{37 61 111}"  // put the RGB value of whats being colored when no paint is present, if $blendtintcoloroverbase is 0 then put [1 1 1] here.
+	"$color2" "{37 61 111}"
 	"$colortint_tmp" "[0 0 0]"
 
 //	"$envmap" "env_cubemap"
