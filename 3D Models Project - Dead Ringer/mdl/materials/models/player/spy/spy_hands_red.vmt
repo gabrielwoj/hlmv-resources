@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+"$basetexture" "models/player/spy/spy_hands_red"
+"$no_draw" "1"
+}

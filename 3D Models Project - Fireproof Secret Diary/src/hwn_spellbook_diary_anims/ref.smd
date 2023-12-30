@@ -1,0 +1,11 @@
+// Created by Crowbar 0.74
+version 1
+nodes
+  0 "hwn_spellbook_diary" -1
+  1 "mvm" 0
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 1.570792 0.000005 -0.000005
+    1 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+end
