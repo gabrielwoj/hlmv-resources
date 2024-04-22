@@ -1,0 +1,1444 @@
+@include "tf.fgd"
+
+// TF2 supplementary game definition file (.fgd) 
+// Customization by A Boojum Snark.
+// August 11 2014
+// Originally posted at tf2maps.net
+// http://forums.tf2maps.net/showthread.php?t=4674
+
+@MaterialExclusion
+[
+	"cable"
+]
+
+@AutoVisGroup = "Entities"
+[
+	"Lights"
+	[
+		"light"
+	]
+]
+
+@AutoVisGroup = "Custom"
+[
+	"Game Logic"
+	[
+		"func_nav_blocker"
+		"func_nav_prefer"
+		"func_nav_prerequisite"
+	]
+]
+
+// ============================================================
+// BASE CLASSES
+
+@BaseClass base(Targetname) = BaseFilter
+[
+	Negated(choices) : "Filter mode" : 0 : "If set to Allow, only entities who match the criteria will pass the filter. "+
+		"If set to Disallow, only entities who do NOT match the criteria will pass the filter." =
+	[
+		0 : "Allow entities that match criteria"
+		1 : "Disallow entities that match criteria"
+	]
+
+	input TestActivator(void) : "Test the activator against the filter and fires OnPass or OnFail output."
+	output OnPass(void) : "Fired in response to TestActivator input if the activator passes the filter."
+	output OnFail(void) : "Fired in response to TestActivator input if the activator fails to pass the filter."
+]
+
+@BaseClass = DamageTypeABS
+[
+	damagetype(choices) : "Damage Type" : 0 : "Damage types can be combined to have more than one effect. Simply add the numeric values for the desired types together and use the resulting number. (16 [train] + 64 [blast] = 80: gibbing train death)" =
+	[
+		0 : "GENERIC"
+		//
+		16 : "Train"
+		65536 : "Sawblade"
+		1048576 : "Critical"
+		16777216 : "Ignite (no after-burn damage)"
+		32 : "FALL ('...fell to a clumsy painful death')"
+		//
+		1 : "CRUSH (red flash)"
+		2 : "BULLET (bullet impact sounds)"
+		4 : "SLASH (double blood)"
+		8 : "BURN (silent damage, does not ignite)"
+		//__16 : "Train"
+		//__32 : "FALL (...fell to a clumsy painful death)"
+		64 : "BLAST (gibs on death)"
+		128 : "CLUB (critical death scream, only)"
+		256 : "SHOCK (smoke and sparks)"
+		//512 : "SONIC"
+		//1024 : "ENERGYBEAM"
+		//2048 : ""
+		//4096 : ""
+		//8192 : ""
+		16384: "DROWN (blue flash and gurgles)"
+		//32768 : "PARALYSE"
+		//__65536 : "Sawblade"
+		//131072 : "POISON"
+		//262144 : "RADIATION (gibs on death)"
+		//524288 : "DROWNRECOVER"
+		//__1048576 : "Critical"
+		//2097152 : "SLOWBURN"
+		4194304 : "SLOWFREEZE (leaves a body-double)"
+		//8388608 : ""
+		//__16777216 : "Ignite (no after-burn damage)"
+		//33554432 : ""
+		//67108864 : ""
+		//134217728 : ""
+		//268435456 : ""
+		//536870912 : ""
+		//1073741824 : ""
+	]
+]
+
+@BaseClass color(0 0 200) base(Targetname, TeamNum, EnableDisable, Toggle, Angles, PlayerTouch, FadeDistance) = Item
+[
+	powerup_model(choices) : "Model" : "" : "Change the model to something other than the default model." =
+	[
+	]
+	AutoMaterialize(choices) : "Auto-Materialize" : 1 : "The pickup should automatically materialize after being picked up." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+]
+
+@BaseClass = ObjectABS
+[
+	TeamNum(choices) : "Team" : 2 : "Team" =
+	[
+		2 : "Red"
+		3 : "Blue"
+	]
+	defaultupgrade(choices) : "Starting Upgrade Level" : 0 =
+	[
+		0 : "Level 1"
+		1 : "Level 2"
+		2 : "Level 3"	
+	]
+	
+	input Enable(void) : "Enable this entity."
+	input Disable(void) : "Disable this entity."
+	input Show(void) : "Makes the building visible and tries to re-enable it."
+	input Hide(void) : "Makes the building invisible and disables it."
+	input SetHealth(integer) : "Set the current AND maximum health. Will NOT kill if set to 0. If object is upgraded health will scale according to new value."
+	input AddHealth(integer) : "Increase health. Will NOT surpass maximum. Will NOT kill if 0 health is reached using negative values."
+	input RemoveHealth(integer) : "Decrease health. Will kill if 0 health is reached."
+	input SetTeam(integer) : "Set the team the object is allied to. Does NOT change skin."
+	input skin(integer) : "Set the skin the object uses. Useful in conjunction with SetTeam."
+	input SetBuilder(void)
+	output OnDestroyed(void) : "Sent when object dies."
+	output OnDamaged(void) : "Sent when hurt."
+	output OnObjectHealthChanged(integer) : "Sends current health as a parameter whenever a change occurs."
+]
+
+// ============================================================
+// WORLDSPAWN
+
+@SolidClass base(Targetname,worldbase,ResponseContext) = worldspawn : 
+	"This is the world entity. Each map can only contain one, and it's automatically created for you."
+[
+	skyname(string) : "SkyBox Texture Name" : "sky_tf2_04"
+	detailvbsp(string) : "Detail .vbsp file" : "detail_2fort.vbsp" : "Detail .vbsp file to use for emitting detail props (found in directory <root>/modname)"
+	detailmaterial(string) : "Detail material file" : "detail/detailsprites_2fort" : "Material for detail sprites to use for drawing detail props"
+]
+
+// ============================================================
+// SOLID CLASSES
+
+@SolidClass base(Parentname,Targetname,EnableDisable) = dispenser_touch_trigger : "Trigger for dispenser healing bounds"
+[
+	StartDisabled(choices) : "Start Disabled" : 0 : "NOTE: This entity only controls healing zone. Disabling it will still allow ammo resupply." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+]
+
+@SolidClass base(Door, Origin) = func_door : 
+	"A brush entity for use as a player-useable door."
+[
+	spawnflags(flags) =
+	[
+		1 : "Starts Open - OBSOLETE, use 'Spawn Position' key instead" : 0
+		4 : "Non-solid to Player" : 0
+		8: "Passable" : 0
+	    32: "Toggle" : 0
+		256:"Use Opens" : 0
+		512: "NPCs Can't" : 0
+		1024: "Touch Opens" : 0
+		2048: "Starts locked" : 0
+		4096:	"Door Silent" : 0
+	]
+	movedir(angle) : "Move Direction (Pitch Yaw Roll)" : "0 0 0" : "The direction the door will move, when it opens."
+	filtername(filterclass) : "Block Filter Name" : : "Filter to use to determine entities that block the door. ( Half-Life: Source port only )"
+	wait(integer) : "Delay Before Reset (-1 stay)" : -1 : "Amount of time, in seconds, after the door has opened before it closes. Once it has closed, it can be used again. If the value is set to -1, the door never closes itself."
+]
+
+@SolidClass base(Targetname,TeamNum,EnableDisable,Toggle,Parentname) = func_flag_alert : "Alerts are triggered when an enemy carrying a flag starts touching the area (or any player for an area with no team)."
+[
+	playsound(choices) : "Play alert sound" : 1 : "Play the sound when the alert is triggered." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+   
+	alert_delay(integer) : "Delay between alerts (in seconds)" : 10 : "The amount of time between alerts being triggered (per team). Will only re-alert if flag changes carrier or leaves and reenters."
+
+	output OnTriggeredByTeam1(void) : "Sent when RED triggers the alert."
+	output OnTriggeredByTeam2(void) : "Sent when BLUE triggers the alert."
+]
+
+@SolidClass base(Targetname,TeamNum,EnableDisable,Toggle,Parentname) = func_nobuild :
+	"Engineer no-build area."
+[
+	parentname(target_destination) : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent. NOTE: A moving nobuild will only prevent building in it's current location, it will not do anything to buildings it moves over."
+	
+	AllowSentry(choices) : "Allow Sentries" : 0 : "Sentries are allowed to be built in this volume" =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	AllowDispenser(choices) : "Allow Dispensers" : 0 : "Dispensers are allowed to be built in this volume" =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	AllowTeleporters(choices) : "Allow Teleporters" : 0 : "Teleporters are allowed to be built in this volume" =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	input SetActive(void) : "Activates the nobuild zone."
+	input SetInactive(void) : "Deactivates the nobuild zone."
+	input ToggleActive(void) : "Toggle the state of the nobuild zone."
+]
+
+@SolidClass base(func_physbox) = func_physbox_multiplayer : 
+	"This class is the same as func_physbox, except the runtime collisions use a more bouncy method that avoids " +
+	"the prediction errors normal physics objects get."
+[
+]
+
+@SolidClass base(Targetname,TeamNum,EnableDisable,Toggle,Parentname) = func_regenerate :
+	"Regeneration zone for players."
+[
+	associatedmodel(target_destination) : "Associated Model" : "" : "The prop_dynamic that represents this zone in the world. The associated model should have appropriate open and close animations for when players interact with the zone."
+]
+
+@SolidClass base(Targetname,EnableDisable,Toggle,Parentname) = func_respawnflag :
+	"Forces flag to return to home when touching this entity."
+[
+]
+
+@SolidClass base(Targetname,TeamNum,EnableDisable,Toggle,Parentname) = func_respawnroom :
+	"Designates a respawn room for a team."
+[
+]
+
+@SolidClass base(Trigger,Targetname,DamageTypeABS) = trigger_hurt :
+	"A trigger volume that damages entities that touch it."
+[
+	master(string) : "Master (Obsolete)" : : "Legacy support: The name of a master entity. If the master hasn't been activated, this entity will not activate."
+	damage(integer) : "Damage" : 10 : "The amount of damage done to entities that touch this trigger. The damage is done every half-second. See also 'Damage Model' for extra details on how damage can be dealt."
+	damagecap(integer) : "Damage Cap" : 20 : "Maximum damage dealt per second. This field is only used if you select the Doubling w/Forgiveness damage model, via the spawnflag."
+	damagemodel(choices) : "Damage Model" : 0 : "How damage is dealt. Normal always does the specified amount of damage each half second. Doubling starts with the specified amount and doubles it each time it hurts the toucher. Forgiveness means that if the toucher gets out of the trigger the damage will reset to the specified value. Good for making triggers that are deadly over time without having to cause massive damage on each touch." =
+	[
+		0 : "Normal"
+		1 : "Doubling w/forgiveness"
+	]
+	
+	nodmgforce(choices) : "Zero Damage Force" : 0 : "Should the damaged entity receive no physics force from this trigger." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	input SetDamage(float) : "Set a new amount of damage for this trigger."
+	
+	output OnHurt(void) : "Fired whenever this trigger hurts something other than a player."
+	output OnHurtPlayer(void) : "Fired whenever this trigger hurts a player."
+]
+
+@SolidClass base(Targetname,Parentname,Trigger) = trigger_stun : "A trigger volume that induces a stun effect on players."
+[
+	stun_type(choices) : "Stun type" : 0 =
+	[
+		0 : "None"
+		1 : "Sandman stun"
+		2 : "Humiliation/Fear mode"
+	]
+	stun_effects(choices) : "Scared effects" : 0 : "Enables the 'scared' particle effects. Does not work if stun type is none. Scream sound only plays if stun type is Fear."=
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	stun_duration(float) : "Duration" : 3 : "Time in seconds that the player will remain under the effects of this trigger after leaving its area."
+	move_speed_reduction(float) : "Move speed reduction" : 0 : "Reduce maximum speed by this fraction of base max speed (450), this is not class dependent. 0 = no reduction. 1 = total reduction, no movement. Example: 0.3 = Reduction by 30% of 450 = 315 max speed = only scout and medic will notice a change."
+	trigger_delay(float) : "Delay" : 0 : "Time in seconds after entering the trigger before the player is affected. Will occur immediately if the player exits the trigger before this time. This also delays OnStunPlayer firing."
+	
+	output OnStunPlayer(void) : "Sent when a player is stunned (dependent on delay setting)."
+]
+
+@SolidClass base(Trigger) = trigger_vphysics_motion :
+	"A volumetric trigger that affects the motion of vphysics objects that touch it."
+[
+	spawnflags(Flags) =
+	[
+		4096 : "Can move (through hierarchical attachment)" : 0
+	]
+
+	StartDisabled(choices) : "Start Disabled" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	filtername(filterclass) : "Filter Name" : : "Filter to use to see if activator triggers me. See filter_activator_name for more explanation."
+	
+	SetGravityScale(float) : "Scale gravity of objects in the field." : "1.0"
+	input SetGravityScale(float) : "Scale gravity of objects in the field."
+
+	SetAdditionalAirDensity(float) : "Additional air density for drag" : "0"
+	input SetAdditionalAirDensity(float) : "Additional air density for drag"
+
+	SetVelocityLimit(float) : "Max velocity in field (0 disables)" : "0.0"
+	input SetVelocityLimit(float) : "Max velocity in field."
+
+	SetVelocityLimitDelta(float) : "Velocity reduction rate" : "0.0" : "Max amount to reduce velocity per second when it exceeds the velocity limit (0 disables)"
+	input SetVelocityLimitDelta(float) : "Max amount to reduce velocity per second"
+
+	input SetVelocityLimitTime(string) : "Accepts two arguments: the first is the new velocity limit, the second is the time it takes to ramp to that value"
+
+	SetVelocityScale(float) : "Velocity scale/drag" : "1.0"
+	input SetVelocityScale(float) : "Velocity scale/drag"
+
+	SetAngVelocityLimit(float) : "Max angular velocity in field" : "0.0" : "(degrees/s, 0 disables)"
+	input SetAngVelocityLimit(float) : "Max angular velocity in field."
+
+	SetAngVelocityScale(float) : "Angular Velocity scale/drag" : "1.0"
+	input SetAngVelocityScale(float) : "Angular Velocity scale/drag"
+
+	SetLinearForce(float) : "Linear force (0 disables)" : "0.0"
+	input SetLinearForce(float) : "Linear force (0 disables)"
+
+	SetLinearForceAngles(angle) : "Direction of linear force (Pitch Yaw Roll (Y Z X))" : "0 0 0"
+	input SetLinearForceAngles(string) : "Direction of linear force (Pitch Yaw Roll (Y Z X))"
+
+	ParticleTrailMaterial(string) : "Particle Trail Material" : : "Name of a material to use for the particle trail, no name means no particle trail"
+	ParticleTrailLifetime(float) : "Particle Trail Lifetime" : 4 : "Lifetime of the particles to emit"
+	ParticleTrailStartSize(float) : "Particle Trail Starting Sprite Size" : 2 : "Starting size of the sprite to emit"
+	ParticleTrailEndSize(float) : "Particle Trail Ending Sprite Size" : 3 : "Ending size of the sprite to emit"
+
+	// Inputs
+	input	Enable(void) : "Enable the trigger."
+	input	Disable(void): "Disable the trigger."
+	input	Toggle(void) : "Toggle enable/disable."
+]
+
+// ============================================================
+// POINT CLASSES
+
+@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = ai_changetarget : "Change Target"
+[
+	target(target_destination) : "Target entity" : : "Name of entity whose target will be changed."
+	m_iszNewTarget(string) : "New Target"
+
+	// Inputs
+	input Kill(void) : "Removes this entity from the world"
+	input Activate(void) : "Changes the entities target"
+]
+
+@PointClass color(0 0 255) size(-1 -1 -64, 1 1 -8) sidelist(sides) iconsprite("editor/env_cubemap.vmt") = env_cubemap : 
+	"An entity that creates a sample point for the Cubic Environment Map."
+[
+	cubemapsize(choices) : "Cubemap Size" : 0 =
+	[
+		0 : "Default"
+		1 : "1x1"
+		2 : "2x2"
+		3 : "4x4"
+		4 : "8x8"
+		5 : "16x16"
+		6 : "32x32"
+		7 : "64x64"
+		8 : "128x128"
+		9 : "256x256"
+	]
+	sides(sidelist) : "Brush faces": : "(Optional) Brushes faces to directly attach to the env_cubemap. Press Pick then click on faces in the 3D View to select them. Use CTRL while clicking to add or remove from the selection."
+]
+
+@PointClass base(Targetname,Parentname,Angles) iconsprite("editor-abs/env_entity_maker") = env_entity_maker : 
+	"Spawns the specified entity template at its origin. If set to auto-spawn, it will spawn the template whenever there's room and the player "+
+	"is looking elsewhere." 
+[
+	spawnflags(Flags) =
+	[
+		1 : "Enable AutoSpawn (will spawn whenever there's room)" : 0
+		2 : "AutoSpawn: Wait for entity destruction" : 0
+		4 : "AutoSpawn: Even if the player is looking" : 0
+		8 : "ForceSpawn: Only if there's room" : 0
+	  	16 : "ForceSpawn: Only if the player isn't looking" : 0
+	]
+
+	EntityTemplate(target_destination) : "Point_template To Spawn" : "" : "Name of the point_template to spawn here."
+
+	PostSpawnSpeed(float) : "PostSpawn Movement Speed" : "0" : "If specified, all the entities created in the template will move this fast in the specified PostSpawn Movement Direction."
+	PostSpawnDirection(angle) : "PostSpawn Movement Direction" : "0 0 0" : "If a PostSpawn Movement Speed is specified, all the entities created in the template will move in this direction."
+	PostSpawnDirectionVariance(float) : "PostSpawn Direction Variance" : "0.15" : "This variance is applied to the PostSpawn Movement Direction for each spawned entity in the template. Use it to apply some randomness to the directions."
+	PostSpawnInheritAngles(choices) : "PostSpawn Inherit Angles" : 0 : "If in hierarchy, is spawn direction in world space, or object local space of parent" =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	input ForceSpawn(void)				: "Spawn an instance of the template at this origin and angle."
+	input ForceSpawnAtEntityOrigin(target_destination) : "Spawn an instance of the template that the same origin and angle as the specified entity (specify by targetname in parameters)"
+	output OnEntitySpawned(void) : "Fired when an instance of the entity template has been spawned."
+	output OnEntityFailedSpawn(void) : "Fired when a ForceSpawn input failed to spawn the template, either due to lack of space or being in player's view, depending on the spawnflags."
+]
+
+@PointClass base(Targetname, DXLevelChoice, Angles) iconsprite("editor/fog_controller") color(255 255 255) = env_fog_controller : 
+	"An entity that controls the fog and view distance in the map."
+[
+	// Inputs
+	input SetStartDist(float) : "Set the fog start distance."
+	input SetEndDist(float) : "Set the fog end distance."
+	input SetMaxDensity(float) : "Set the maximum density of the fog."
+	input TurnOn(void) : "Turn the fog on."
+	input TurnOff(void) : "Turn the fog off."
+	input SetColor(color255) : "Set the primary fog color."
+	input SetColorSecondary(color255) : "Set the secondary fog color."
+	input SetFarZ(integer): "Set the far clip plane distance."
+	input SetAngles(string) : "Set the angles to use for the secondary fog direction."
+
+	input SetColorLerpTo(color255) : "Set the primary fog color."
+	input SetColorSecondaryLerpTo(color255) : "Set the secondary fog color."
+	input SetStartDistLerpTo(float) : "Set the fog start distance."
+	input SetEndDistLerpTo(float) : "Set the fog end distance."
+	input StartFogTransition(void) : "Start fog transition."
+
+	// Starting fog parameters for the level. These are selectable per LOD.	
+	fogenable(choices) : "Fog Enable" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	fogblend(choices) : "Fog Blend" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	use_angles(choices) : "Use Angles for Fog Dir" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	fogcolor(color255) : "Primary Fog Color" : "255 255 255"
+	fogcolor2(color255) : "Secondary Fog Color" : "255 255 255"
+	fogdir(string) : "Primary Fog Direction" : "1 0 0"
+	fogstart(string) : "Fog Start" : "500.0"
+	fogend(string) : "Fog End" : "2000.0"
+	fogmaxdensity(float) : "Fog Max Density [0..1]" : "1"
+
+	foglerptime(float) : "Interpolate time" : "0"
+	
+	farz(string) : "Far Z Clip Plane" : "-1"
+	
+	spawnflags(flags) =
+	[
+		1 : "Master (Has priority if multiple env_fog_controllers exist)" : 0
+	]
+]
+
+@PointClass base(Targetname,Parentname,EnableDisable) sphere() iconsprite("editor/env_soundscape") line(255 255 255, targetname, position0) line(255 255 255, targetname, position1) line(255 255 255, targetname, position2) line(255 255 255, targetname, position3) line(255 255 255, targetname, position4) line(255 255 255, targetname, position5) line(255 255 255, targetname, position6) line(255 255 255, targetname, position7) = env_soundscape : 
+	"An entity to control sound in an area. The active soundscape at any time is the last one that had line-of-sight to the player, and was within the radius."
+[
+	radius(integer) : "Radius" : 128 : "If set to -1, then the player can hear the soundscape as long as he can see it (regardless of distance to it)."
+	soundscape(choices) : "Soundscape" : : "The name of the soundscape to use. Corresponds to an entry in the soundscapes*.txt file in the scripts directory." =
+	[
+		"tf2.general_ambient" : "tf2.general_ambient"
+		"tf2.respawn_room" : "tf2.respawn_room"
+		"2fort.Underground" : "2fort.Underground"
+		"2fort.Underground2" : "2fort.Underground2"
+		"2fort.OutdoorPond" : "2fort.OutdoorPond"
+		"2fort.OutdoorFort" : "2fort.OutdoorFort"
+		"2fort.Indoor" : "2fort.Indoor"
+		"Badlands.Inside" : "Badlands.Inside"
+		"Badlands.Outside" : "Badlands.Outside"
+		"Badlands.OutsideInterior" : "Badlands.OutsideInterior"
+		"barnblitz.inside" : "barnblitz.inside"
+		"barnblitz.outside" : "barnblitz.outside"
+		"CactusV.Inside" : "CactusV.Inside (Decoy)"
+		"CactusV.RespawnA" : "CactusV.RespawnA (Decoy)"
+		"CactusV.Outside" : "CactusV.Outside (Decoy)"
+		"Chariots.Inside" : "Chariots.Inside (Pipeline)"
+		"Chariots.Outside" : "Chariots.Outside (Pipeline)"
+		"Deathpit.Inside" : "Deathpit.Inside (Coaltown)"
+		"Deathpit.RespawnA" : "Deathpit.RespawnA (Coaltown)"
+		"Deathpit.Outside" : "Deathpit.Outside (Coaltown)"
+		"DoubleCross.Inside" : "DoubleCross.Inside"
+		"DoubleCross.Outside" : "DoubleCross.Outside"
+		"Dustbowl.Indoors" : "Dustbowl.Indoors"
+		"Dustbowl.Outdoors" : "Dustbowl.Outdoors"
+		"Egypt.Indoor" : "Egypt.Indoor"
+		"Egypt.Outdoor" : "Egypt.Outdoor"
+		"Goldrush.DeepInside" : "Goldrush.DeepInside"
+		"Goldrush.Outside" : "Goldrush.Outside"
+		"Goldrush.Inside" : "Goldrush.Inside"
+		"Gorge.Inside" : "Gorge.Inside"
+		"Gorge.Outside" : "Gorge.Outside"
+		"Granary.Outside" : "Granary.Outside"
+		"GravelPit.Outside" : "GravelPit.Outside"
+		"Halloween.Inside" : "Halloween.Inside"
+		"Halloween.Outside" : "Halloween.Outside"
+		"Halloween.Underworld" : "Halloween.Underworld"
+		"Halloween.hell" : "Halloween.hell"
+		"harbor.inside_blue_spawn_01" : "harbor.inside_blue_spawn_01 (Foundry)"
+		"harbor.inside_blue_hq" : "harbor.inside_blue_hq (Foundry)"
+		"harbor.indoor_blue_fuel" : "harbor.indoor_blue_fuel (Foundry)"
+		"harbor.outdoor_blue" : "harbor.outdoor_blue (Foundry)"
+		"harbor.inside_red_spawn_01" : "harbor.inside_red_spawn_01 (Foundry)"
+		"harbor.inside_red_hq" : "harbor.inside_red_hq (Foundry)"
+		"harbor.indoor_red_fuel" : "harbor.indoor_red_fuel (Foundry)"
+		"harbor.outdoor_red" : "harbor.outdoor_red (Foundry)"
+		"harbor.outdoor_central" : "harbor.outdoor_central (Foundry)"
+		"HighTower.Inside" : "HighTower.Inside"
+		"HighTower.Outside" : "HighTower.Outside"
+		"Hydro.Outside" : "Hydro.Outside"
+		"Lakeside.Cave" : "Lakeside.Cave"
+		"Lakeside.Inside" : "Lakeside.Inside"
+		"Lakeside.Lake" : "Lakeside.Lake"
+		"Lakeside.Outside" : "Lakeside.Outside"
+		"Lakeside.Temple" : "Lakeside.Temple"
+		"Lakeside.Wood" : "Lakeside.Wood"
+		"Lumberyard.Inside" : "Lumberyard.Inside"
+		"Lumberyard.Outside" : "Lumberyard.Outside"
+		"Mannworks.InsideCellars" : "Mannworks.InsideCellars"
+		"Mannworks.InsideWood" : "Mannworks.InsideWood"
+		"Mannworks.Outside" : "Mannworks.Outside"
+		"Mannworks.Respawn" : "Mannworks.Respawn"
+		"Medieval.Inside" : "Medieval.Inside"
+		"Medieval.Outside" : "Medieval.Outside"
+		"mountainlab.Bluspawn" : "mountainlab.Bluspawn"
+		"mountainlab.Cpoint" : "mountainlab.Cpoint"
+		"mountainlab.Inside" : "mountainlab.Inside"
+		"mountainlab.Outside1" : "mountainlab.Outside1"
+		"Nightfall.Cavern" : "Nightfall.Cavern"
+		"Nightfall.Indoors" : "Nightfall.Indoors"
+		"Nightfall.Outdoors" : "Nightfall.Outdoors"
+		"Nucleus.Inside" : "Nucleus.Inside"
+		"Nucleus.Outside" : "Nucleus.Outside"
+		"Ravine.Inside" : "Ravine.Inside"
+		"Ravine.Outside" : "Ravine.Outside"
+		"Rottenburg.Alcove" : "Rottenburg.Alcove"
+		"Rottenburg.Clearing" : "Rottenburg.Clearing"
+		"Rottenburg.Spawn" : "Rottenburg.Spawn"
+		"Rottenburg.Town" : "Rottenburg.Town"
+		"Sawmill.Inside" : "Sawmill.Inside"
+		"Sawmill.InsideNoLights" : "Sawmill.InsideNoLights"
+		"Sawmill.InsideWaterfall" : "Sawmill.InsideWaterfall"
+		"Sawmill.Outside" : "Sawmill.Outside"
+		"soho_generic" : "soho_generic (Kong King)"
+		"soho_indoor" : "soho_indoor (Kong King)"
+		"soho_square" : "soho_square (Kong King)"
+		"underground_soho" : "underground_soho (Kong King)"
+		"stormfront.Underground" : "stormfront.Underground (Coldfront)"
+		"stormfront.Outside" : "stormfront.Outside (Coldfront)"
+		"ThunderMountain.Inside" : "ThunderMountain.Inside"
+		"ThunderMountain.Outside" : "ThunderMountain.Outside"
+		"Upward.Inside" : "Upward.Inside"
+		"Upward.Outside" : "Upward.Outside"
+		"Viaduct.Inside" : "Viaduct.Inside"
+		"Viaduct.Outside" : "Viaduct.Outside"
+		"warehouse.inside_boilers" : "warehouse.inside_boilers (Mannhattan)"
+		"warehouse.inside_mainhall" : "warehouse.inside_mainhall (Mannhattan)"
+		"warehouse.inside_spawn_foyer" : "warehouse.inside_spawn_foyer (Mannhattan)"
+		"warehouse.inside_spawn_int" : "warehouse.inside_spawn_int (Mannhattan)"
+		"warehouse.outside" : "warehouse.outside"
+		"Well.DeepInside" : "Well.DeepInside"
+		"Well.Inside" : "Well.Inside"
+		"Well.Outside" : "Well.Outside"
+	]
+	position0(target_destination) : "Sound Position 0" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position1(target_destination) : "Sound Position 1" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position2(target_destination) : "Sound Position 2" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position3(target_destination) : "Sound Position 3" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position4(target_destination) : "Sound Position 4" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position5(target_destination) : "Sound Position 5" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position6(target_destination) : "Sound Position 6" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+	position7(target_destination) : "Sound Position 7" : "" : "A sound position that will be referenced inside the soundscape text file. Usually used to position a set of sounds within the world."
+
+	// Inputs
+	input Enable(void) : "Enable the soundscape."
+	input Disabled(void) : "Disable the soundscape."
+	input ToggleEnabled(void) : "Toggle the soundscape enabled state."
+
+	// Outputs
+	output OnPlay(void) : "Fired when this soundscape becomes the active one."
+]
+
+@PointClass base(Targetname, Angles) iconsprite("editor-abs/env_sun") color(255 0 0) = env_sun : 
+	"An entity to control & draw a sun effect in the sky."
+[
+	target(target_destination) : "Viewer entity" : : "Name of an entity used to determine where the sun is in the skybox. The sun should be lined up on a line from this entity to the env_sun entity."
+	
+	use_angles(choices) : "UseAngles" : 0 : "The old way to orient env_sun is to point it at a target. The new way is to specify the angles. If you use the new way, set this property to YES." = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	pitch(integer) : "Pitch" : 0
+
+	rendercolor(color255) : "Sun Color (R G B)" : "100 80 80"
+	overlaycolor(color255) : "Overlay Color (R G B)" : "0 0 0" : "A value of 0 0 0 will act the old way."
+	
+	size(integer) : "Size" : 16
+	overlaysize(integer) : "Overlay Size" : -1 : "A value of -1 means the overlay will act the old way."
+	
+	material(sprite) : "Material Name" : "sprites/light_glow02_add_noz" : "Material of the inner glow."
+	overlaymaterial(sprite) : "Overlay Material Name" : "sprites/light_glow02_add_noz" : "Material of the overlay glow."
+
+	HDRColorScale(float) : "HDR color scale." : "1.0" : "float value to multiply sprite color by when running in HDR mode."
+
+	// Inputs
+	input TurnOn(void) : "Enable sun rendering."
+	input TurnOff(void) : "Disable sun rendering."
+	input SetColor(color255) : "Change the sun's color. Format: <Red 0-255> <Green 0-255> <Blue 0-255>"
+]
+
+@FilterClass base(BaseFilter,DamageTypeABS) iconsprite("editor-abs/filter_damage_type") = filter_damage_type :
+	"A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter."
+[
+]
+
+@PointClass base(Targetname) iconsprite("editor/game_text") = game_text : 
+	"An entity that displays text on player's screens." 
+[
+	spawnflags(flags) =
+	[
+		1: "All Players" : 0
+	]
+
+	message(string) : "Message Text" : "" : "Message to display onscreen."
+	x(string) : "X (0 - 1.0 = left to right) (-1 centers)" : "-1" : "Horizontal position on the player's screens to draw the text. The value should be between 0 and 1, where 0 is the far left of the screen and 1 is the far right. -1 centers the text."
+	y(string) : "Y (0 - 1.0 = top to bottom) (-1 centers)" : "-1" : "Vertical position on the player's screens to draw the text. The value should be between 0 and 1, where 0 is the top of the screen and 1 is the bottom. -1 centers the text."
+	effect(Choices) : "Text Effect" : 0 =
+	[
+		0 : "Fade In/Out"
+		1 : "Credits"
+		2 : "Scan Out"
+	]
+	color(color255) : "Color1" : "100 100 100"
+	color2(color255) : "Color2" : "240 110 0"
+	fadein(string) : "Fade in Time (or character scan time)" : "1.5" : "The time it should take for the text to fully fade in."
+	fadeout(string) : "Fade Out Time" : "0.5" : "The time it should take for the text to fade out, after the hold time has expired."
+	holdtime(string) : "Hold Time" : "1.2" : "The time the text should stay onscreen, after fading in, before it begins to fade out."
+	fxtime(string) : "Scan time (scan effect only)" : "0.25" : "If the 'Text Effect' is set to Scan Out, this is the time it should take to scan out all the letters in the text."
+	channel(choices) : "Text Channel" : 1 : "You can have up to six individual game_text messages onscreen at once, stored in channels. Select which channel this text should be placed in, which will overwrite any active message already in that channel." =
+	[
+		0 : "Channel 0"
+		1 : "Channel 1"
+		2 : "Channel 2"
+		3 : "Channel 3" 
+		4 : "Channel 4"
+		5 : "Channel 5"
+	]
+	master(string) : "Master" : : "Legacy support: The name of a master entity. If the master hasn't been activated, this entity will not activate."
+
+	// Inputs
+	input Display(void) : "Display the message text."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/game_text_tf") = game_text_tf : 
+	"An entity that displays text on player's screens, in pretty tf hud format" 
+[
+	message(string) : "Message Text" : "" : "Message to display onscreen."
+	
+	icon(string) : "Icon" : "" : "Hud icon ( from mod_textures.res ) to display."
+	
+	display_to_team(Choices) : "Audience" : 0 =
+	[
+		0 : "Everyone"
+		2 : "Red Team Only"
+		3 : "Blue Team Only"
+	]
+	
+	background(Choices) : "Background Panel Color" : 0 =
+	[
+		0 : "Grey"
+		2 : "Red"
+		3 : "Blue"
+	]
+
+	// Inputs
+	input Display(void) : "Display the message text."
+]
+
+@PointClass base(Targetname, TeamNum, Angles, EnableDisable,Parentname) studioprop("models/editor/camera.mdl") = info_observer_point :
+	"Observer Point"
+[
+	associated_team_entity(target_destination) : "Associated Team Entity" : "" : "An entity associated with this point that can be owned by a team (such as a flag or control point). Players will only be able to use this observer point if their team owns the associated team entity."
+	
+	defaultwelcome(choices) : "Welcome Point" : 0 :  "This marks this point as a welcome point. Players use this when connecting to servers the first time." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	fov(float) : "FOV" : 0
+]
+
+@PointClass base(Targetname,TeamNum,EnableDisable,Angles,Parentname) studio("models/editor-abs/dev_engy.mdl") = info_player_teamspawn :
+	"This entity marks the spawn point for Team Fortress players."
+[
+	TeamNum(choices) : "Team" : 0 : "IMPORTANT: If you have ANY team_control_point_round entities in your map, you MUST also set the '<team> spawn for round' settings below. If this is not done both teams will spawn at all spawn points." =
+	[
+		0 : "Any"
+		2 : "Red"
+		3 : "Blue"
+	]
+	SpawnMode(choices) : "Spawn Mode" : 0 : "How the game decides when a player can spawn here.  Triggered mode will only allow players sent via a trigger_player_respawn_override (in which case this spawn must be named, and match the trigger)." =
+	[
+		0 : "Normal"
+		1 : "Triggered"
+	] 
+	parentname(target_destination) : "Parent" : : "Spawn angle will NOT rotate with parent, only location will change. The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	controlpoint(target_destination) : "Associated Control Point" : : "The team_control_point associated with this spawn. Ownership of control points will control this spawn point's enabled state."
+	round_bluespawn(target_destination) : "Blue spawn for round" : : "Blue spawn point when the associated round is being played."
+	round_redspawn(target_destination) : "Red spawn for round" : : "Red spawn point when the associated round is being played."
+]
+
+@PointClass base(Item) studio("models/items/medkit_large.mdl") sphere(fademindist) sphere(fademaxdist) = item_healthkit_full :
+	"Health Kit Full"
+[
+	powerup_model(choices) : "Model" : "" : "Change the model to something other than the default model. Not shown in Hammer." =
+	[
+		"" : "Default"
+		"models/props_halloween/halloween_medkit_large.mdl" : "Halloween Soup Cauldron"
+	]
+]
+
+@PointClass base(Item) studio("models/items/medkit_small.mdl") sphere(fademindist) sphere(fademaxdist) = item_healthkit_small :
+	"Health Kit Small"
+[
+	powerup_model(choices) : "Model" : "" : "Change the model to something other than the default model. Not shown in Hammer." =
+	[
+		"" : "Default"
+		"models/props_halloween/halloween_medkit_small.mdl" : "Halloween Candy Bar"
+	]
+]
+
+@PointClass base(Item) studio("models/items/medkit_medium.mdl") sphere(fademindist) sphere(fademaxdist) = item_healthkit_medium :
+	"Health Kit Medium"
+[
+	powerup_model(choices) : "Model" : "" : "Change the model to something other than the default model. Not shown in Hammer." =
+	[
+		"" : "Default"
+		"models/props_halloween/halloween_medkit_medium.mdl" : "Halloween Pumpkin Candy Tin"
+		"models/props_medieval/medieval_meat.mdl" : "Medieval Ham"
+	]
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/logic_branch_listener") = logic_branch_listener :
+	"Contains a list of logic_branch entities and fires outputs when the state of any of the logic_branches changes.\n\n"+
+	"This entity is used to fire an event when a set of conditions are all satisfied."
+[
+	Branch01(target_destination) : "Logic Branch 01" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch02(target_destination) : "Logic Branch 02" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch03(target_destination) : "Logic Branch 03" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch04(target_destination) : "Logic Branch 04" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch05(target_destination) : "Logic Branch 05" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch06(target_destination) : "Logic Branch 06" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch07(target_destination) : "Logic Branch 07" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch08(target_destination) : "Logic Branch 08" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch09(target_destination) : "Logic Branch 09" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch10(target_destination) : "Logic Branch 10" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch11(target_destination) : "Logic Branch 11" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch12(target_destination) : "Logic Branch 12" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch13(target_destination) : "Logic Branch 13" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch14(target_destination) : "Logic Branch 14" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch15(target_destination) : "Logic Branch 15" : : "The name of one or more logic_branches (wildcards allowed)."
+	Branch16(target_destination) : "Logic Branch 16" : : "The name of one or more logic_branches (wildcards allowed)."
+
+	input Test(void) : "Tests the state of all the logic_branches in the list and fires the appropriate output."
+
+	output OnAllTrue(void) : "Fired when all the logic_branches in the list become true."
+	output OnAllFalse(void) : "Fired when all the logic_branches in the list become false."
+	output OnMixed(void) : "Fired when one of the logic branches in the list changes, but some are true and some are false."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/logic_measure_movement") = logic_measure_movement :
+	"An entity that can measure the movement of an entity relative to another entity " +
+	"and apply that movement to a third entity."
+[
+	MeasureTarget(target_destination) : "Entity to Measure" : "" : "Entity whose movement you want to measure."
+	MeasureReference(target_destination) : "Measure Reference" : "" : "The movement of Entity to Measure will be measured relative to this entity."
+	Target(target_destination) : "Entity to Move" : "" : "This entity will be moved to mimic the motions of Entity to Measure."
+	TargetReference(target_destination) : "Movement Reference" : "" : "The Entity to Move will move relative to this entity."
+	TargetScale(float) : "Movement scale" : "1" : "A scale to divide the measured movements by, before applying those movements to the Entity to Move. 1 = target entity moves as much as the measured entity, 2 = target entity moves half as far as the measured entity, and 0.5 = target entity moves twice as far as the measured entity."
+	MeasureType(choices) : "Measurement Type" : 0 =
+	[
+		0 : "Position"
+		1 : "Eye position"
+	]
+
+	input SetMeasureTarget(string) : "Set the Entity to Measure, whose movement should be measured."
+	input SetMeasureReference(string) : "Set the Measure Reference entity."
+	input Target(string) : "Set the Entity to Move, which will be moved to mimic the measured entity."
+	input SetTargetReference(string) : "Set the Movement Reference entity."
+	input SetTargetScale(float) : "Set the scale to divide the measured movements by."
+	input Enable(void) : "Enable the logic_measure_movement."
+	input Disable(void) : "Disable the logic_measure_movement."
+]
+
+@PointClass base(Targetname,EnableDisable) iconsprite("editor-abs/math_remap") = math_remap :
+	"An entity that remaps a range of input values to a given range of output values."
+[
+	spawnflags(flags) = 
+	[
+		1 : "Ignore out of range input values" : 1
+		2 : "Clamp output to output range" : 2
+	]
+
+	in1(integer) : "Minimum Valid Input Value" : 0 : "Input values below this value will be ignored."
+	in2(integer) : "Maximum Valid Input Value" : 1 : "Input values above this value will be ignored."
+	out1(integer) : "Output Value When Input Is Min." : : "When the input value is equal to 'Minimum Valid Input Value', this is the output value."
+	out2(integer) : "Output Value When Input Is Max." : : "When the input value is equal to 'Maximum Valid Input Value', this is the output value."
+
+	input InValue(float) : "Input value and fire the output with the remapped value."
+	output OutValue(float) : "Fired when the InValue input is received, with the remapped input value as the parameter."
+]
+
+@PointClass base(Targetname,Parentname,Angles,ObjectABS) studio("models/buildables/dispenser_light.mdl") = obj_dispenser : 
+	"TF2 Dispenser" 
+[
+]
+
+@PointClass base(Targetname,Parentname,Angles,ObjectABS) studio("models/buildables/sentry3.mdl") = obj_sentrygun : 
+	"TF2 Sentrygun" 
+[
+	spawnflags(flags) = 
+	[
+		2: "Invulnerable" : 0
+		4: "Upgradable" : 0
+		8: "Infinite Ammo" : 0
+	]
+]
+
+@PointClass base(Targetname,Parentname,Angles,ObjectABS) studio("models/buildables/teleporter.mdl") = obj_teleporter : "TF2 Teleporter" 
+[
+	spawnflags(flags) = 
+	[
+		2: "Invulnerable" : 0
+	]
+	
+	teleporterType(choices) : "Teleporter Type" : 1 =
+	[
+		1 : "Entrance"
+		2 : "Exit"
+	]
+	matchingTeleporter(target_destination) : "Matching Teleporter" : : "Name of another obj_teleporter of the opposite type to link. Must be cross-linked on both or they will not function."
+]
+
+@PointClass base(Targetname, Parentname, Angles) cylinder(255 255 255, targetname, target, radius, targetname, targetname, radius)  cylinder(255 255 255, targetname, altpath, radius, targetname, targetname, radius) color(255 192 0) size(16 16 16) = path_track : 
+	"An entity used to build paths for other entities to follow. Each path_track is a node on the path, each holding the name of the next path_track in the path."
+[
+	spawnflags(Flags) =
+	[
+		1:  "Disabled" : 0
+		2:  "Fire once" : 0
+		4:  "Branch Reverse" : 0
+		8:  "Disable train" : 0
+		16: "Teleport to THIS path track" : 0
+		32: "Rollback zone on HUD (auto-roll if team_train_watcher handles movement)" : 0
+		64: "Rollforward zone on HUD (auto-roll if team_train_watcher handles movement)" : 0
+	]
+	
+	target(target_destination) : "Next Stop Target" : : "The next path_track in the path."
+	altpath(target_destination) : "Branch Path" : : "An alternative path_track to be the next node in the path. Useful for making branching paths. Use the ToggleAlternatePath / EnableAlternatePath inputs to make the alternative path active."
+	speed(float) : "New Train Speed" : 0 : "When the train reaches this path_track, it will set its speed to this speed. "+
+		"This speed must be a positive value that is less than the train's max speed. A value of 0 will cause no change in the train's speed."
+	radius(float) : "Path radius" : 0 : "Used by NPCs who follow track paths (attack chopper/gunship). This tells them the maximum distance they're allowed to be from the path at this node."
+
+	orientationtype(choices) : "Orientation Type" : 1 : "The way that the path follower faces as it moves through this path track." =
+	[
+		0 : "No change"
+		1 : "Face direction of motion"
+		2 : "Face this path_track's angles"
+	]
+
+	input ToggleAlternatePath(void) : "Cause the track to toggle to/from its alternate path."
+	input EnableAlternatePath(void) : "Enable the alternate path of the track."
+	input DisableAlternatePath(void) : "Disable the alternate path of the track."
+	input TogglePath(void) : "Cause the track to toggle on/off/"
+	input EnablePath(void) : "Enable the track."
+	input DisablePath(void) : "Disable the track."
+	output OnPass(void) : "Fired when any entity following this path passes this path_track node."
+	output OnTeleport(void)  : "Fired when any entity following this path teleports directly to this path_track node."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/point_clientcommand") = point_clientcommand : 
+	"An entity that issues commands to the client console, as if it was typed in by the player (if activator is a player, or the local player in single player)."
+[
+	// Inputs
+	input Command(string) : "Command to execute."
+]
+
+@PointClass base(Targetname,DamageTypeABS) sphere(DamageRadius) = point_hurt :
+	"An entity that does damage to all entities in a radius around itself, with a specified delay." +
+	"If 'Target Entity' is specified, the damage is only done to that entity."
+[
+	DamageTarget(string) : "Target Entity" : "" : "If specified, only this entity will take damage. Otherwise, all entities within the Radius will take damage."
+	
+	DamageRadius(float) : "Radius" : 256 : "All entities within this radius of this entity will take damage. If a 'Target Entity' is specified, only that entity will take damage."
+	Damage(integer) : "Damage" : 5 : "Damage done to all affected entities each time this entity fires."
+	DamageDelay(float) : "Delay" : 1 : "Delay between refires, in seconds."
+
+	input Hurt(void) : "Force a single fire, damaging either the Target Entity or all entities within the radius."
+	input TurnOn(void) : "Enable this entity. It will start damaging entities everytime it fires, and refire based upon the specified Delay."
+	input TurnOff(void) : "Disable this entity. It will stop damaging entities."
+	input Toggle(void) : "Toggle this entity between On/Off state."
+]
+
+@PointClass base(Targetname,Parentname,EnableDisable,Angles) iconsprite("editor-abs/point_proximity_sensor") = point_proximity_sensor :
+	"An entity that detects another entity's proximity to a target position."
+[
+	target(target_destination) : "Target Entity Name" : : "Name of the entity whose angles will be sensed."
+
+	spawnflags(Flags) =
+	[
+		1 : "Test the distance as measured along the axis specified by our direction." : 0
+	]
+	
+	input Toggle(void) : "Toggle the sensor between enabled and disabled."
+	output Distance(float) : "Distance of the target entity away from this entity."
+]
+
+@PointClass base(Targetname,Angles,Parentname) sphere(radius) sphere(inner_radius) = point_push: "Point Push"
+[
+	spawnflags(Flags) = 
+	[
+		1 : "Test LOS before pushing" : 0
+		2 : "Use angles for push direction" : 0
+		4 : "No falloff (constant push at any distance)" : 0
+		8 : "Push players" : 1
+		16 : "Push physics" : 1
+	]
+	
+	enabled(choices) : "Start Enabled"	: 1 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	magnitude(float) : "Magnitude" : 100 : "How strongly to push away from the center."
+	radius(float) : "Radius" : 128 : "Radius to affect items in."
+	inner_radius(float) : "Inner radius" : "0" : "If not zero, the LOS is calculated from a point intersecting this sphere."
+	
+	input Enable(void) : "Enable the push."
+	input Disable(void): "Disable the push."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/point_servercommand") = point_servercommand : 
+	"An entity that issues commands to the server console."
+[
+	// Inputs
+	input Command(string) : "Command to execute."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/point_template") = point_template : 
+	"Turns an entity, or set of entities, into a single template that can be instanced anywhere, and multiple times. "+
+	"If there are interdependencies (entity I/O, hierarchy, or other name references) between the entities "+
+	"in the template, the entities in the template will have their names changed and the interdependencies will "+
+	"be reconnected to the changes names. The name change format is as follows: '<original name>&0000', where the 0000 "+
+	"will be replaced with the current global template instance, so wildcard searches for '<original name>*' will still find them.\n"+
+	"If you don't want the name fixup to happen, because you're only spawning the template once, or you want inputs to "+
+	"trigger all instances of the template, check the 'Preserve entity names' spawnflag. \n"+
+	"To spawn the template in other places, use an env_entity_maker."
+[
+	spawnflags(flags) =
+	[
+		1 : "Don't remove template entities" : 0
+		2 : "Preserve entity names (Don't do name fixup)" : 1
+	]
+
+	Template01(target_destination) : "Template 1"
+	Template02(target_destination) : "Template 2"
+	Template03(target_destination) : "Template 3"
+	Template04(target_destination) : "Template 4"
+	Template05(target_destination) : "Template 5"
+	Template06(target_destination) : "Template 6"
+	Template07(target_destination) : "Template 7"
+	Template08(target_destination) : "Template 8"
+	Template09(target_destination) : "Template 9"
+	Template10(target_destination) : "Template 10"
+	Template11(target_destination) : "Template 11"
+	Template12(target_destination) : "Template 12"
+	Template13(target_destination) : "Template 13"
+	Template14(target_destination) : "Template 14"
+	Template15(target_destination) : "Template 15"
+	Template16(target_destination) : "Template 16"
+
+	input ForceSpawn(void) : "Spawn an instance of the template at the original position."
+	output OnEntitySpawned(void) : "Fired after spawning an instance of this template."
+]
+
+@PointClass base(Angles) size(-2 -2 -2, 2 2 2) color(0 0 255) = sky_camera : 
+	"An entity used to control the 3D Skybox. Its origin is used to determine the 3D Skybox's position relative to the map. Place this entity, in the 3D Skybox, at the point where the origin of the map should be."
+[
+	scale(integer) : "3D Skybox scale" : 16 : "Scale of the skybox."
+	fogenable(choices) : "Fog Enable" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	fogblend(choices) : "Fog Blend" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	use_angles(choices) : "Use Angles for Fog Dir" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	fogcolor(color255) : "Primary Fog Color" : "255 255 255"
+	fogcolor2(color255) : "Secondary Fog Color" : "255 255 255"
+	fogdir(string) : "Primary Fog Dir" : "1 0 0"
+	fogstart(string) : "Fog Start" : "500.0" : "Distance at which the skybox fog should start."
+	fogend(string) : "Fog End" : "2000.0" : "Distance at which the skybox fog should be fully opaque."
+	fogmaxdensity(float) : "Fog Max Density [0..1]" : "1"
+]
+
+
+// ============================================================
+// TF GAME LOGIC ENTITIES
+
+@SolidClass base(Targetname,EnableDisable,TeamNum,Parentname) = func_capturezone :
+	"TF flag capture zone (set Team to 'any' for Territory Control maps)."
+[
+	capturepoint(integer) : "Capture Point" : 1 : "Used for Attack/Defend and Territory Control maps ONLY. This is ignored for CTF maps. Set this value to the Capture Point number for this entity."
+	
+	output OnCapture(void) : "Sent when a flag is captured in this zone."
+	output OnCapTeam1(void) : "Sent when RED captures a flag in this zone."
+	output OnCapTeam2(void) : "Sent when BLU captures a flag in this zone."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/game_forcerespawn") = game_forcerespawn :
+	"Removes buildings, grenades, etc., from the world and forces all players to respawn " +
+	"(without being killed)."
+[
+	input ForceRespawn(void) : "Force players to respawn and remove buildings, grenades, etc., from the world.."
+	input ForceRespawnSwitchTeams(void) : "Switch all players to the opposite team, and then respawn all players (and remove buildings, grenades, etc., from the world)."
+	input ForceTeamRespawn(integer) : "Force players on a specific team to respawn. 2 for Red, 3 for Blue. This does NOT remove buildings, grenades, etc., from the world..."
+	output OnForceRespawn(void) : "Sent when the entity respawns the players."	
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/game_round_win") = game_round_win :
+	 "Tells the game rules that the round has either been won (if a team is assigned) " +
+	 "or enter Sudden Death mode (if no team is assigned)."
+[	
+	TeamNum(choices) : "Team" : 0 : "Setting this to none will result in Sudden Death or a Stalemate, depending on the server's choice." =
+	[
+		0 : "None"
+		2 : "Red"
+		3 : "Blue"
+	]
+	
+	force_map_reset(choices) : "Force map reset" : 1 : "Force the map to reset during the force respawn after the round is over." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	switch_teams(choices) : "Switch teams on map win?" : 0 : "Switch the teams when the game is going to be reset." = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	input SetTeam(integer) : "Changes the entity's team (this is used to determine which team has won the round (0 = none)."
+	input RoundWin(void) : "Tell the game rules the round is over."
+	output OnRoundWin(void) : "Sent when the entity tells the game rules the round is over."	
+]
+
+@PointClass base(Targetname, EnableDisable, Angles, Parentname) studio("models/effects/cappoint_hologram.mdl") = team_control_point :
+	"Control Point"
+[
+	spawnflags(flags) =
+	[
+		1: "Hide Control Point on HUD" : 0
+		2: "Start with model hidden" : 0
+		4: "Disable shadow" : 1
+		8: "Disable sounds" : 0
+	]
+
+		point_start_locked(choices) : "Start locked" : 0 : "Locked means the point will not be available for capture until it is unlocked via its input."  =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
+	point_printname(string) : "Print Name" : "TODO: Set Name" : "LOCALIZED name to print on the HUD." 
+	point_group(integer) : "Group Index" : 0 : "Used for grouping points together under a team_control_point_master (not using control point rounds)."
+	point_default_owner(choices) : "Default Owner" : 0 : "Default Owner of the control point."  =
+	[
+		0 : "Neither"
+		2 : "Red"
+		3 : "Blue"
+	]
+	point_index(integer) : "Index" : 0 : "Index of this point (must be unique)."
+	
+	point_warn_on_cap(choices) : "Warning Type" : 0 : "Type of warning to issue to the team that owns the control point when the opposing team starts to capture it."  =
+	[
+		0 : "Normal Announcements"
+		1 : "Final Capture Point Warning"
+		2 : "No Announcements"
+	]
+	
+	point_warn_sound(string) : "Warning sound" : "ControlPoint.CaptureWarn" : "Sound to be played when this point is being captured (if warn on capture is set)." 
+	
+	random_owner_on_restart(choices) : "Randomly set the owner on restart" : 0 : "Randomly set the owner of this point during a full restart of the map. The ratio of default owners among the points with this flag will be kept when selecting random owners."  =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	// Per team data
+	team_timedpoints_2(integer) : "Time-based point value for RED." : 0
+	team_timedpoints_3(integer) : "Time-based point value for BLUE." : 0
+	
+	team_capsound_0(sound) : "Reset Sound" : "" : "Sound made when point resets."
+	team_capsound_2(sound) : "Red Capture Sound" : "" : "Sound made when RED captures."
+	team_capsound_3(sound) : "Blue Capture Sound" : "" : "Sound made when BLUE captures."
+	
+	team_model_0(studio) 	: "Reset Model" : "models/effects/cappoint_hologram.mdl" : "Model when point is unowned."
+	team_model_2(studio) 	: "RED Model" : "models/effects/cappoint_hologram.mdl" : "Model when RED owns the point."
+	team_model_3(studio) 	: "BLUE Model" : "models/effects/cappoint_hologram.mdl" : "Model when BLUE owns the point."
+	
+	team_bodygroup_0(integer) : "Reset model bodygroup" : 3
+	team_bodygroup_2(integer) : "RED model bodygroup" : 1
+	team_bodygroup_3(integer) : "BLUE model bodygroup" : 1
+
+	team_icon_0(material)	: "HUD icon neutral" : "sprites/obj_icons/icon_obj_neutral" : "HUD icon material when no one owns the point."
+	team_icon_2(material)	: "HUD icon RED" : "sprites/obj_icons/icon_obj_red" : "HUD icon material when RED owns the point."
+	team_icon_3(material)	: "HUD icon BLUE" : "sprites/obj_icons/icon_obj_blu" : "HUD icon material when BLUE owns the point."
+
+	team_overlay_0(material) : "HUD overlay neutral" : "" : "HUD material that will overlay the icon when no one owns the point."
+	team_overlay_2(material) : "HUD overlay RED" : "" : "HUD material that will overlay the icon when RED owns the point."
+	team_overlay_3(material) : "HUD overlay BLUE" : "" : "HUD material that will overlay the icon when BLUE owns the point."
+
+ 	team_previouspoint_2_0(target_source) : "RED Previous Required Point 1" : "" : "The name of a previous capture point that RED must own to be able to capture this point. If empty, the team must own all points preceding this one. Pointing to itself means no previous point required."
+	team_previouspoint_2_1(target_source) : "RED Previous Required Point 2" : "" : "The name of a second previous capture point that RED must own to be able to capture this point."
+	team_previouspoint_2_2(target_source) : "RED Previous Required Point 3" : "" : "The name of a third previous capture point that RED must own to be able to capture this point."
+	team_previouspoint_3_0(target_source) : "BLUE Previous Required Point 1" : "" : "The name of a previous capture point that BLUE must own to be able to capture this point. If empty, the team must own all points preceding this one. Pointing to itself means no previous point required."
+	team_previouspoint_3_1(target_source) : "BLUE Previous Required Point 2" : "" : "The name of a second previous capture point that BLUE must own to be able to capture this point."
+	team_previouspoint_3_2(target_source) : "BLUE Previous Required Point 3" : "" : "The name of a third previous capture point that BLUE must own to be able to capture this point."
+
+	// Outputs
+	output OnOwnerChangedToTeam1(void) : "Sent when owner is changed to RED."
+	output OnOwnerChangedToTeam2(void) : "Sent when owner is changed to BLUE."
+	output OnCapReset(void) : "Sent when owner is changed to neutral."
+
+	output OnRoundStartOwnedByTeam1(void) : "Sent when a round is starting and the point is owned by RED."
+	output OnRoundStartOwnedByTeam2(void) : "Sent when a round is starting and the point is owned by BLUE."
+	
+	output OnCapTeam1(void) : "Sent when RED capture this point."
+	output OnCapTeam2(void) : "Sent when BLUE capture this point."
+	
+	output OnUnlocked(void) : "Sent when point unlocks."
+
+	input SetOwner(integer) : "Set the owner of the point."
+	input HideModel(void) : "Hide the control point model."
+	input ShowModel(void) : "Show the control point model again."
+	input SetLocked(integer) : "Lock the control point. 0 = unlocked, 1 = locked"
+	input SetUnlockTime(integer) : "This will automatically unlock the control point in the specified amound of time (seconds)."
+]
+
+@PointClass base(Targetname,EnableDisable) iconsprite("editor-abs/team_control_point_master") = team_control_point_master : "Control Point Master"
+[
+	team_base_icon_2(material) : "Material for the RED Base icon" : "sprites/obj_icons/icon_base_red"
+	team_base_icon_3(material) : "Material for the BLUE Base icon" : "sprites/obj_icons/icon_base_blu"
+	caplayout(string) : "Cap Layout" : "" : "A string that tells the HUD how to lay out the cap points. It should be a string with indexes of cap points seperated by commas to denote a new line. So <2,0 1> would create a pyramid, with cap point 2 on the top and cap points 0 & 1 on the bottom."
+	custom_position_x(float) : "Custom cap position X" : -1 : "Set the cap layout custom X position [0,1]"
+	custom_position_y(float) : "Custom cap position Y" : -1 : "Set the cap layout custom Y position [0,1]"
+
+	cpm_restrict_team_cap_win(choices) : "Restrict team from winning" : 0 : "Prevent this team from winning by capping all the points. This field is ignored if you're using control_point_rounds in your map (set this field inside the rounds)." =
+	[
+		0 : "Neither"
+		1 : "Both"
+		2 : "Red"
+		3 : "Blue"
+	]
+	
+	switch_teams(choices) : "Switch teams on map win?" : 0 : "Switch the teams when one team has won the map and the game is going to be reset." = 
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	score_style(choices) : "Scoring style" : 0 : "Sets the style of scoring used for capture point maps." = 
+	[
+		0 : "Add team score for each round won"
+		1 : "Add team score for each captured point"
+	]
+	
+	play_all_rounds(choices) : "Play all rounds before changelevel" : 0 : "Determines whether the server may changelevel when mp_timelimit is up before all mini-rounds have been completed (for maps like Dustbowl)." = 
+	[
+		0 : "Changelevel normally"
+		1 : "Only changelevel after all mini-rounds have been played to completion"
+	]	
+	
+	partial_cap_points_rate(float) : "Partial cap rate" : 0 : "Rate at which to give partial cap points for area captures."
+
+	output OnWonByTeam1(void) : "Sent when RED wins the game."
+	output OnWonByTeam2(void) : "Sent when BLUE wins the game."
+	
+	input SetWinner(integer) : "Set the winner of the round to this team (0 for a stalemate)."
+	input SetWinnerAndForceCaps(integer) : "Set the winner of the round to this team and give them ownership of all points."
+	input SetCapLayout(string) : "Set the cap layout string."
+	input SetCapLayoutCustomPositionX(float) : "Set the cap layout custom X position [0,1]"
+	input SetCapLayoutCustomPositionY(float) : "Set the cap layout custom Y position [0,1]"
+]
+
+@PointClass base(Targetname,EnableDisable) iconsprite("editor-abs/team_control_point_round") = team_control_point_round :
+	"Control Point Round (you may have as many of these in the map as you would like)."
+[
+	cpr_printname(string) : "Print Name" : "" : "LOCALIZED name to print on the RoundInfo panel" 
+	
+	cpr_priority(integer) : "Priority" : 0 : "The priority value for this round (must be >= 0). Higher priority rounds will be picked first. If multiple rounds have the same priority value, a random selection will be used."
+	
+	cpr_cp_names(string) : "Control points in this round" : "" : "Names of the control points included in this round (space delimited). Control points may belong to more than one control point round.  The names of the control points (and the rounds) should all be unique." 
+
+	cpr_restrict_team_cap_win(choices) : "Restrict team from winning" : 0 : "Prevent this team from winning by capping all the points" =
+	[
+		0 : "Neither"
+		1 : "Both"
+		2 : "Red"
+		3 : "Blue"
+	]
+	
+	output OnStart(void) : "Sent when this round is selected to be played."
+	output OnEnd(void) : "Sent when this round is finished."
+	output OnWonByTeam1(void) : "Sent when RED wins this round."
+	output OnWonByTeam2(void) : "Sent when BLUE wins this round."
+]
+
+@PointClass base(Targetname,EnableDisable) iconsprite("editor-abs/team_round_timer") = team_round_timer :
+	"Round Timer. Timer starts paused by default."
+[
+	timer_length(integer) : "Timer length (in seconds)" : 600 : "Initial timer length."
+	max_length(integer) : "Max timer length (in seconds)" : 0 : "Maximum timer length (0 = no max). This value is used to ensure the timer never goes above this value when SetTime and AddTime are used."
+	
+	start_paused(choices) : "Start paused" : 1 : "Should the timer start paused? (will need to send a Resume input to start the timer if this is set)." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	setup_length(integer) : "Setup timer length (in seconds)" : 0 : "Length of setup time before the round begins and the timer starts to countdown the normal time. (0 = no setup time)  Setup time is run at the beginning of every round before the normal time begins."
+	
+	reset_time(choices) : "Reset time on round restart" : 0 : "Reset the timer time after a round restart.  This is not the setup time, but the normal round time." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	auto_countdown(choices) : "Use countdown sounds" : 1 : "Let the timer automatically count down the end of a round." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	show_in_hud(choices) : "Show timer in the HUD" : 1 : "Note: You can only show one timer in the HUD at a time." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	show_time_remaining(choices) : "Count Direction" : 1 : "Use this to reverse the timer and have it count from 0 up to the timer length. Sounds and outputs still fire like normal. For example, on a count-up timer with a length of 90 seconds, when it reaches 60 the announcer will say '30 seconds remanining', however, the On30SecRemaining output will fire when the visual timer reaches 61." =
+	[
+		0 : "Up"
+		1 : "Down"
+	]
+		
+	input Pause(void) : "Pause the timer."
+	input Resume(void) : "Resume the timer."
+	input SetTime(integer) : "Set the timer to this value (in seconds)."
+	input AddTime(integer) : "Add time to the timer (in seconds). Added time cannot excede the max timer length."
+	input AddTeamTime(string) : "Input takes a string (space delimited) with the team number and the time to be added (in seconds) because of the team (2 for red, 3 for blue, and 0 for no team...but you could just use AddTime for that). Added time cannot excede the max timer length. Example: 2 600 (adds 10 minutes because of team red)" 
+	input Restart(void) : "Restart the timer."
+	input ShowInHUD(bool) : "Show this timer in the HUD (0 no, 1 yes)."
+	input SetMaxTime(integer) : "Set the max timer length to this value (in seconds). The timer's time will never excede this value."
+	input AutoCountdown(bool) : "Turn off/on the auto countdown feature (0 no, 1 yes)."
+	input SetSetupTime(integer) : "Set the setup time length to this value (in seconds)."
+	
+	output On5MinRemain(void) : "Sent when 5 minutes remain."
+	output On4MinRemain(void) : "Sent when 4 minutes remain."
+	output On3MinRemain(void) : "Sent when 3 minutes remain."
+	output On2MinRemain(void) : "Sent when 2 minutes remain."
+	output On1MinRemain(void) : "Sent when 1 minutes remain."
+	output On30SecRemain(void) : "Sent when 30 seconds remain."
+	output On10SecRemain(void) : "Sent when 10 seconds remain."
+	output On5SecRemain(void) : "Sent when 5 seconds remain."
+	output On4SecRemain(void) : "Sent when 4 seconds remain."
+	output On3SecRemain(void) : "Sent when 3 seconds remain."
+	output On2SecRemain(void) : "Sent when 2 seconds remain."
+	output On1SecRemain(void) : "Sent when 1 second remains."
+	
+	output OnRoundStart(void) : "Sent when the round starts."
+	output OnFinished(void) : "Sent when the timer is finished."
+	
+	output OnSetupStart(void) : "Sent when the setup time begins."
+	output OnSetupFinished(void) : "Sent when the setup time is finished."
+]
+
+@PointClass base(Targetname,TeamNum,EnableDisable) iconsprite("editor-abs/team_train_watcher") = team_train_watcher :
+	"Entity that tracks the train progress through train escort maps"
+[
+	train(target_destination) : "Train to watch."
+	train_can_recede(choices) : "Allow the train to recede?" : 1 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	train_recede_time(integer) : "Train recede time (in seconds)" : 0 : "Length of time before the train begins to recede. 0 = use TF2 default setting of 30 seconds."
+	
+	handle_train_movement(choices) : "Handle Train Movement" : 0 : "If Yes, the watcher will handle three-speed forward movement, receding, and roll forward/back zones. Slow areas (such as for uphill) will need to be done manually by sending the watcher a SetSpeedForwardModifier input." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	speed_forward_modifier(float) : "Default Speed Modifier" : 1 : "0 to 1 scaling of the train's max speed. Can be adjusted with the SetSpeedForwardModifier input. Only functions with Handle Train Movement enabled."
+	env_spark_name(target_destination) : "Associated env_spark" : : "Name of the env_spark to turn on when the cart is receding. Only functions with Handle Train Movement enabled."
+
+	start_node(target_destination) : "Node that the path starts at."
+	goal_node(target_destination) : "Node that the path ends at."
+	
+	linked_pathtrack_1(target_destination) : "Linked PathTrack 1"
+	linked_cp_1(target_destination) : "Linked CP 1"
+	
+	linked_pathtrack_2(target_destination) : "Linked PathTrack 2"
+	linked_cp_2(target_destination) : "Linked CP 2"
+	
+	linked_pathtrack_3(target_destination) : "Linked PathTrack 3"
+	linked_cp_3(target_destination) : "Linked CP 3"
+		
+	linked_pathtrack_4(target_destination) : "Linked PathTrack 4"
+	linked_cp_4(target_destination) : "Linked CP 4"
+		
+	linked_pathtrack_5(target_destination) : "Linked PathTrack 5"
+	linked_cp_5(target_destination) : "Linked CP 5"
+		
+	linked_pathtrack_6(target_destination) : "Linked PathTrack 6"
+	linked_cp_6(target_destination) : "Linked CP 6"
+		
+	linked_pathtrack_7(target_destination) : "Linked PathTrack 7"
+	linked_cp_7(target_destination) : "Linked CP 7"
+		
+	linked_pathtrack_8(target_destination) : "Linked PathTrack 8"
+	linked_cp_8(target_destination) : "Linked CP 8"
+		
+	hud_min_speed_level_1(float) : "Min Speed for Speed Level 1" : 1
+	hud_min_speed_level_2(float) : "Min Speed for Speed Level 2" : 60
+	hud_min_speed_level_3(float) : "Min Speed for Speed Level 3" : 80
+	
+	input SetNumTrainCappers(integer) : "Set Number of players capping the train."
+	input SetSpeedForwardModifier(float)
+	input SetTrainRecedeTime(integer) : "Set the number of seconds before the train starts to recede."
+	input SetTrainCanRecede(bool) : "Determines whether or not the train can recede."
+	input SetTrainRecedeTimeAndUpdate(integer) : "Set the number of seconds before the train starts to recede and update the current recede time."
+	
+	output OnTrainStartRecede(void) : "Sent when the train should start receding."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/tf_gamerules") = tf_gamerules : "Proxy entity for TF Gamerules"
+[	
+	hud_type(choices) : "Hud Type" : 0 : "Override the HUD type clients should display." =
+	[
+		0 : "Default"
+		1 : "CTF HUD"
+		2 : "CP HUD"
+		3 : "Payload HUD"
+	]
+	ctf_overtime(choices) : "CTF Overtime" : 1 : "Allow Overtime for CTF maps." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	input SetRedTeamRespawnWaveTime(float) : "Set the RED team's respawn wave time"
+	input SetBlueTeamRespawnWaveTime(float) : "Set the BLU team's respawn wave time"
+	input AddRedTeamRespawnWaveTime(float) : "Add to the RED team's respawn wave time"
+	input AddBlueTeamRespawnWaveTime(float) : "Add to the BLU team's respawn wave time"
+	input SetRedTeamGoalString(string) : "Set the RED team's goal string to show in the hud"
+	input SetBlueTeamGoalString(string) : "Set the BLU team's goal string to show in the hud"
+	input SetRedTeamRole(integer) : "Set RED team role, 0=none, 1=defenders, 2=attackers"
+	input SetBlueTeamRole(integer) : "Set BLU team role, 0=none, 1=defenders, 2=attackers"
+	input SetRequiredObserverTarget(string) : "Sets the given entity (by name) to be the required observer target for all spectators. Must be cleared to allow spectators to cycle through targets normally again."
+	input AddRedTeamScore(integer) : "Add to the RED team score (can be a negative number)"
+	input AddBlueTeamScore(integer) : "Add to the BLU team score (can be a negative number)"
+	input SetStalemateOnTimelimit(bool) : "Determines whether mp_timelimit can end the match in the middle of a round."
+	input SetRedKothClockActive(void) : "Set the RED team clock active for KOTH maps."
+	input SetBlueKothClockActive(void) : "Set the BLU team clock active for KOTH maps."
+	input SetCTFCaptureBonusTime(integer) : "Set the length of crit bonus time (in seconds) for CTF captures."
+	input PlayVORed(string) : "Play the given sound entry via the VO channel" 
+	input PlayVOBlue(string) : "Play the given sound entry via the VO channel"
+	input PlayVO(string) : "Play the given sound entry via the VO channel"
+	input HandleMapEvent(string) : "Handles map events. This will be different events for different maps."
+	input SetCustomUpgradesFile(string) : "Specifies the path relative to the game directory to the upgrades file to be used."
+	output OnWonByTeam1(void) : "Sent when RED wins the round."
+	output OnWonByTeam2(void) : "Sent when BLU wins the round."
+	output Team1PlayersChanged(integer) : "Sent when RED team player count changes, due to a player joining or leaving the team."
+	output Team2PlayersChanged(integer) : "Sent when BLUE team player count changes, due to a player joining or leaving the team."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/tf_logic_arena") = tf_logic_arena : "Handles arena logic and outputs."
+[
+	CapEnableDelay(integer) : "Control Point Enable Time" : 60 : "Time (in seconds) before the control point unlocks."
+	
+	output OnArenaRoundStart(void) : "Sent when round begins."
+	output OnCapEnabled(void) : "Sent when control point unlocks."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/tf_logic_cp_timer") = tf_logic_cp_timer : "Control Point Timer Entity."
+[
+	controlpoint(target_destination) : "Associated Control Point" : : "The team_control_point associated with this timer."
+	timer_length(integer) : "Timer length (in seconds)" : 60 : "Length of the timer that runs when the control point becomes available for capture."
+	
+	output OnCountdownStart(void) : "Sent when the timer starts."
+	output OnCountdown15SecRemain(void) : "Sent when 15 seconds remain."	
+	output OnCountdown10SecRemain(void) : "Sent when 10 seconds remain."
+	output OnCountdown5SecRemain(void) : "Sent when 5 seconds remain."
+	output OnCountdownEnd(void) : "Sent when the timer expires and the point is not being captured."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/tf_logic_koth") = tf_logic_koth : "Activates King of the Hill mode."
+//zz_blue_koth_timer
+//zz_red_koth_timer
+[
+	timer_length(integer) : "Timer Length" : 180 : "Total duration (in seconds) either team must hold the point to win."
+	unlock_point(integer) : "Control Point Enable Time" : 30 : "Time (in seconds) before the control point unlocks."
+
+	input SetRedTimer(integer)	:	"Set the time remaining for the RED timer."
+	input SetBlueTimer(integer)	:	"Set the time remaining for the BLUE timer."
+	input AddRedTimer(integer)	:	"Add time to the RED timer."
+	input AddBlueTimer(integer)	:	"Add time to the BLUE timer."
+]
+
+@PointClass base(Targetname) iconsprite("editor-abs/tf_logic_hybrid_ctf_cp") = tf_logic_hybrid_ctf_cp : "Hybrid Map Entity. This is used to detect a map that blends the CTF and CP game modes."
+[
+]
+
+@PointClass base(Targetname) = tf_logic_medieval : "Enables medieval mode."
+[
+]
+
+@PointClass iconsprite("editor-abs/tf_logic_multiple_escort") = tf_logic_multiple_escort : "Activates multiple escort mode."
+[
+]
