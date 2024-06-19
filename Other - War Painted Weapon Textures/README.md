@@ -1,0 +1,1 @@
+Includes .dds files for War Painted / Decorated Weapons of each grade and each weapon, as well converted .VTFs, ready to use on HLMV. Every texture was taken with the seed set to "0".
