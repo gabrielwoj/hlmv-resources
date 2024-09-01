@@ -28,7 +28,7 @@ Skins that are team-colored include a folder for the RED team, and another for t
 
 - Amputator
 
-* Every single War Paint will include RED and BLU variants for the Ubersaw since the Uber meter stays team-colored, even if the war paint is neutral-colored.
+Note: Every single War Paint for the Ubersaw will include RED and BLU variants since the Uber meter stays team-colored, even if the war paint is neutral-colored.
 
 Extract the "war_paints_folder_tree_and_necessary_files.zip" file onto tf/custom, so you have the entire folder tree you'll be working on, alongside getting rid of jigglebones on jiggleboned weapons, and the pilotlight animation.
 
