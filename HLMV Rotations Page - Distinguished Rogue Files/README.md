@@ -1,0 +1,1 @@
+This is a modification of Omolong's "spy_shirt_materials" to include the collar region as well. It also includes $nocull to the Distinguishe Rogue's .VMTs.
