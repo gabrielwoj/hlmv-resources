@@ -1,0 +1,3 @@
+These are the original VTF files directly from TF2's .vpk. The Dragon Slayer War Paint is the only one that doesn't have a randomized pattern.
+
+However, these shouldn't be used during the Item icons creation for the Official TF2 Wiki. Since I'll be also exporting the non-Factory New variants, I decided it would be best for me to also get the Factory New variant by doing the same extraction method, so all wears stay consistent with the same texture quality.
