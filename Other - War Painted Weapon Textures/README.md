@@ -30,7 +30,7 @@ Skins that are team-colored include a folder for the RED team, and another for t
 
 - Ubersaw*;
 
-- Amputator
+- Amputator.
 
 Note: Every single War Paint for the Ubersaw will include RED and BLU variants since the Uber meter stays team-colored, even if the war paint is neutral-colored.
 
@@ -44,11 +44,11 @@ The model Rotation values (lightrot, Rot and Trans), alongside the proper FOV va
 
 Progress:
 
-Decorated:
+Decorated: 100%
 
-1- The Teufort Collection: In progress;
+1- The Teufort Collection: Complete;
 
-2- The Craftsmann Collection: In progress;
+2- The Craftsmann Collection: Complete;
 
 3- The Concealed Killer Collection: Complete;
 
