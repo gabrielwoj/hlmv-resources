@@ -1,0 +1,1 @@
+Includes "pyro_torso_nogrenades", originally made by Omolong, alongside custom .VMTs that gets rid of the animation for this item.
