@@ -66,29 +66,31 @@ Decorated: 100%
 
 War Paints:
 
+Note: War Paints will only be uploaded to the repository once the entire collection is done (textures converted to VTF, and exteriors moved to their proper folders). However, file names won't be renamed until ALL War Paints are complete (GPA frames taken, textures exported, converted DDS to VTF, and moved to proper folders). This is because I will be doing a mass rename later that will be much easier once everyting is done.
+
 1- The Jungle Jackpot Collection:
 
-1-a) Anodized Aloha: Hasn't started;
+1-a) Anodized Aloha: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-b) Bamboo Brushed: Hasn't started;
+1-b) Bamboo Brushed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-c) Croc Dusted: Hasn't started;
+1-c) Croc Dusted: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-d) Leopard Printed: Hasn't started;
+1-d) Leopard Printed: GPAs captured, need textures to be exported;
 
-1-e) Macaw Masked: Hasn't started;
+1-e) Macaw Masked: GPAs captured, need textures to be exported;
 
-1-f) Mannana Peeled: Hasn't started;
+1-f) Mannana Peeled: GPAs captured, need textures to be exported;
 
-1-g) Park Pigmented: Hasn't started;
+1-g) Park Pigmented: GPAs captured, need textures to be exported;
 
-1-h) Piña Polished: Hasn't started;
+1-h) Piña Polished: GPAs captured, need textures to be exported;
 
-1-i) Sax Waxed: Hasn't started;
+1-i) Sax Waxed: GPAs captured, need textures to be exported;
 
-1-j) Tiger Buffed: Hasn't started;
+1-j) Tiger Buffed: GPAs captured, need textures to be exported;
 
-1-k) Yeti Coated: Hasn't started.
+1-k) Yeti Coated: GPAs captured, need textures to be exported.
 
 ---
 
@@ -401,6 +403,10 @@ War Paints:
 14-i) Secretly Serviced: Hasn't started;
 
 14-j) Team Serviced (TC): Hasn't started.
+
+---
+
+15- Scream Fortress XVI Collection (need to check custom VMTs, and which ones are in Team Color)
 
 ---
 
