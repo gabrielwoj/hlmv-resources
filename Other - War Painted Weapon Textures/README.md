@@ -42,6 +42,22 @@ The model Rotation values (lightrot, Rot and Trans), alongside the proper FOV va
 
 ---
 
+My progress on extraction will be as follows:
+
+1- First capture every single GPA Frame for each skin on every collection;
+
+2- Then get the textures out of the GPA Frames;
+
+3- After extracting them to DDS, move them to their appropriate folders;
+
+4- After EVERYTHING is done, mass-import the .DDS files, and convert them to .VTF;
+
+5- After that, PowerRename the .VTF files to change the folder name from "DDS" to "VTF";
+
+6- Once all that is done, mass-rename every .dds and .vtf file with their internal filenames. This will be done as the last thing, so I can mass-rename everything by searching for "Air Strike" and renaming all .dds and .vtf files to "c_atom_launcher", for instance.
+
+---
+
 Progress:
 
 Decorated: 100%
@@ -96,19 +112,19 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 2- The Infernal Reward Collection:
 
-2-a) Bank Rolled: Hasn't started;
+2-a) Bank Rolled: GPAs captured, need textures to be exported;
 
-2-b) Bloom Buffed (TC): Hasn't started;
+2-b) Bloom Buffed (TC): GPAs captured, need textures to be exported;
 
-2-c) Bonk Varnished (TC): Hasn't started;
+2-c) Bonk Varnished (TC): GPAs captured, need textures to be exported;
 
-2-d) Cardboard Boxed: Hasn't started;
+2-d) Cardboard Boxed: GPAs captured, need textures to be exported;
 
-2-e) Clover Camo'd: Hasn't started;
+2-e) Clover Camo'd: GPAs captured, need textures to be exported;
 
-2-f) Dream Piped (TC): Hasn't started;
+2-f) Dream Piped (TC): GPAs captured, need textures to be exported;
 
-2-g) Fire Glazed (TC): Hasn't started;
+2-g) Fire Glazed (TC): GPAs captured, need textures to be exported;
 
 2-h) Freedom Wrapped: Hasn't started;
 
@@ -406,7 +422,31 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 ---
 
-15- Scream Fortress XVI Collection (need to check custom VMTs, and which ones are in Team Color)
+15- Scream Fortress XVI Collection:
+
+15-a) Broken Record (TC): Hasn't started;
+
+15-b) Necropolish: Hasn't started;
+
+15-c) Stardust: Hasn't started;
+
+15-d) Graphite Gripped: Hasn't started;
+
+15-e) Piranha Mania: Hasn't started;
+
+15-f) Stealth Specialist: Hasn't started;
+
+15-g) Blackout (TC): Hasn't started;
+
+15-h) Brawler's Iron: Hasn't started;
+
+15-i) Gobi Glazed: Hasn't started;
+
+15-j) Sleek Greek (TC): Hasn't started;
+
+15-k) Team Charged (TC): Hasn't started;
+
+15-l) Team Detail (TC): Hasn't started.
 
 ---
 
