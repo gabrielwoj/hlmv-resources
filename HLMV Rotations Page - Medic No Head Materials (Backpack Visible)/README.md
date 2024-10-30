@@ -1,0 +1,1 @@
+Includes "medic_no_head_materials", originally made by Omolong, but the "_backpack" related .VMTs were removed so they are now visible.
