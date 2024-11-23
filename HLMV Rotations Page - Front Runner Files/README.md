@@ -1,0 +1,1 @@
+Originally made by Omolong. This pack includes a hex edit for the first Front Runner style to use "scout_hed.vmt", so the headset is properly visible. To do this, a copy of "scout_red.vmt" directly from the game's .gcf was obtained, then renamed to "scout_hed.vmt" and put on the same folder.
