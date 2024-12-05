@@ -92,11 +92,11 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 1-c) Croc Dusted: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-d) Leopard Printed: GPAs captured, need textures to be exported;
+1-d) Leopard Printed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-e) Macaw Masked: GPAs captured, need textures to be exported;
+1-e) Macaw Masked: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-f) Mannana Peeled: GPAs captured, need textures to be exported;
+1-f) Mannana Peeled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 1-g) Park Pigmented: GPAs captured, need textures to be exported;
 
@@ -126,41 +126,41 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 2-g) Fire Glazed (TC): GPAs captured, need textures to be exported;
 
-2-h) Freedom Wrapped: Hasn't started;
+2-h) Freedom Wrapped: GPAs captured, need textures to be exported;
 
-2-i) Kill Covered: Hasn't started;
+2-i) Kill Covered: GPAs captured, need textures to be exported;
 
-2-j) Merc Stained: Hasn't started;
+2-j) Merc Stained: GPAs captured, need textures to be exported;
 
-2-k) Pizza Polished: Hasn't started;
+2-k) Pizza Polished: GPAs captured, need textures to be exported;
 
-2-l) Quack Canvassed: Hasn't started;
+2-l) Quack Canvassed: GPAs captured, need textures to be exported;
 
-2-m) Star Crossed (TC): Hasn't started.
+2-m) Star Crossed (TC): GPAs captured, need textures to be exported.
 
 ---
 
 3- The Decorated Hero Collection:
 
-3-a) Carpet Bomber Mk.II (TC): Hasn't started;
+3-a) Carpet Bomber Mk.II (TC): GPAs captured, need textures to be exported;
 
-3-b) Woodland Warrior Mk.II: Hasn't started;
+3-b) Woodland Warrior Mk.II: GPAs captured, need textures to be exported;
 
-3-c) Wrapped Reviver Mk.II (TC): Hasn't started;
+3-c) Wrapped Reviver Mk.II (TC): GPAs captured, need textures to be exported;
 
-3-d) Forest Fire Mk.II: Hasn't started;
+3-d) Forest Fire Mk.II: GPAs captured, need textures to be exported;
 
-3-e) Night Owl Mk.II: Hasn't started;
+3-e) Night Owl Mk.II: GPAs captured, need textures to be exported;
 
-3-f) Woodsy Widowmaker Mk.II: Hasn't started;
+3-f) Woodsy Widowmaker Mk.II: GPAs captured, need textures to be exported;
 
-3-g) Autumn Mk.II: Hasn't started;
+3-g) Autumn Mk.II: GPAs captured, need textures to be exported;
 
-3-h) Plaid Potshotter Mk.II (TC): Hasn't started;
+3-h) Plaid Potshotter Mk.II (TC): GPAs captured, need textures to be exported;
 
-3-i) Civic Duty Mk.II (TC): Hasn't started;
+3-i) Civic Duty Mk.II (TC): GPAs captured, need textures to be exported;
 
-3-j) Civil Servant Mk.II (TC): Hasn't started.
+3-j) Civil Servant Mk.II (TC): GPAs captured, need textures to be exported.
 
 ---
 
@@ -186,13 +186,13 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 5- The Saxton Select Collection:
 
-5-a) Dragon Slayer: Hasn't started.
+5-a) Dragon Slayer: GPAs captured, need textures to be exported.
 
 ---
 
 6- The Mann Co. Events Collection:
 
-6-a) Smissmas Sweater (TC): Hasn't started.
+6-a) Smissmas Sweater (TC): GPAs captured, need textures to be exported.
 
 ---
 
@@ -456,7 +456,11 @@ Obtained all material_overrides (VMTs): Complete;
 
 Organized folder tree: Complete;
 
-Removed jigglebones from certain weapons: Complete.
+Removed jigglebones from certain weapons: Complete;
+
+Check if team-colored weapons have any differences on their VMTs. If the difference is noticeable enough, then, single-color War Paints will require previews on both teams. Currently, only Ubersaw was checked: Incomplete;
+
+Re-check what War Paints use the Grenade Launcher and Loose Cannon specific VMTs: Incomplete.
 
 ---
 
