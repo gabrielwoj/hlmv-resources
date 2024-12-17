@@ -100,11 +100,11 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 1-g) Park Pigmented: GPAs captured, need textures to be exported;
 
-1-h) Piña Polished: GPAs captured, need textures to be exported;
+1-h) Piña Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-i) Sax Waxed: GPAs captured, need textures to be exported;
+1-i) Sax Waxed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-j) Tiger Buffed: GPAs captured, need textures to be exported;
+1-j) Tiger Buffed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 1-k) Yeti Coated: GPAs captured, need textures to be exported.
 
