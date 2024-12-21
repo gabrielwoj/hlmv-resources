@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "backpack\player\items\scout\xms_scout_elf_sneakers"
+	$translucent 1
+	$vertexcolor 1
+}

@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "backpack\player\items\demo\demo_kilt"
+	$translucent 1
+	$vertexcolor 1
+}

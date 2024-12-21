@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "backpack\player\items\scout\xms_scout_elf_sneakers_large"
+	$translucent 1
+}
