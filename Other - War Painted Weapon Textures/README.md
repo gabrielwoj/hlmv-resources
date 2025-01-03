@@ -106,13 +106,13 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 1-j) Tiger Buffed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-k) Yeti Coated: GPAs captured, need textures to be exported.
+1-k) Yeti Coated: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
 
 ---
 
 2- The Infernal Reward Collection:
 
-2-a) Bank Rolled: GPAs captured, need textures to be exported;
+2-a) Bank Rolled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 2-b) Bloom Buffed (TC): GPAs captured, need textures to be exported;
 
