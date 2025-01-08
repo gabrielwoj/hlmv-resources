@@ -114,15 +114,15 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 2-a) Bank Rolled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-b) Bloom Buffed (TC): GPAs captured, need textures to be exported;
+2-b) Bloom Buffed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-c) Bonk Varnished (TC): GPAs captured, need textures to be exported;
+2-c) Bonk Varnished (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-d) Cardboard Boxed: GPAs captured, need textures to be exported;
+2-d) Cardboard Boxed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-e) Clover Camo'd: GPAs captured, need textures to be exported;
+2-e) Clover Camo'd: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-f) Dream Piped (TC): GPAs captured, need textures to be exported;
+2-f) Dream Piped (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 2-g) Fire Glazed (TC): GPAs captured, need textures to be exported;
 
