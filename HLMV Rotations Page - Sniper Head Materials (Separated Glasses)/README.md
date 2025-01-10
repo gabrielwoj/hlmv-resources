@@ -1,0 +1,1 @@
+This is a modification of Omolong's "sniper_head_materials" to have the glasses part as a separate model. This is to be used together with TFMV, so the lens of the glasses don't look incorrect while taking paint variants. This can be done by unloading all Submodels once loading the item on TFMV, then loading the tfmv_bg.mdl submodel FIRST, then sniper_glasses.mdl later.
