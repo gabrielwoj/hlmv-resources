@@ -7,7 +7,7 @@
 	"$detailblendfactor" .01
 	"$detailblendmode" 6
 
-
+	"$alphatest" "1"
 	"$yellow" "0"
 	"$one" "1"
 
