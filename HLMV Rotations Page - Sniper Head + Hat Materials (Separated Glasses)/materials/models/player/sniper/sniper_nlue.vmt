@@ -1,6 +1,6 @@
 "VertexLitGeneric"
 {
-	"$basetexture" "models/player/sniper/sniper_blue"
+	"$basetexture" "models/player/sniper/sniper_nlue"
 	"$bumpmap" "models/player/sniper/sniper_normal"
 		"$detail" "effects/tiledfire/fireLayeredSlowTiled512.vtf"	
 	"$detailscale" "5"
