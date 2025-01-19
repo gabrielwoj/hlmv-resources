@@ -124,27 +124,27 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 2-f) Dream Piped (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-g) Fire Glazed (TC): GPAs captured, need textures to be exported;
+2-g) Fire Glazed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-h) Freedom Wrapped: GPAs captured, need textures to be exported;
+2-h) Freedom Wrapped: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-i) Kill Covered: GPAs captured, need textures to be exported;
+2-i) Kill Covered: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 2-j) Merc Stained: GPAs captured, need textures to be exported;
 
-2-k) Pizza Polished: GPAs captured, need textures to be exported;
+2-k) Pizza Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-l) Quack Canvassed: GPAs captured, need textures to be exported;
+2-l) Quack Canvassed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-m) Star Crossed (TC): GPAs captured, need textures to be exported.
+2-m) Star Crossed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
 
 ---
 
 3- The Decorated Hero Collection:
 
-3-a) Carpet Bomber Mk.II (TC): GPAs captured, need textures to be exported;
+3-a) Carpet Bomber Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-b) Woodland Warrior Mk.II: GPAs captured, need textures to be exported;
+3-b) Woodland Warrior Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 3-c) Wrapped Reviver Mk.II (TC): GPAs captured, need textures to be exported;
 

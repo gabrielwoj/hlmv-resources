@@ -1,0 +1,1 @@
+Originally made by Omolong. This pack simply gets rid of the custom model for the Cop Caller, and leaves only his pocket materials.
