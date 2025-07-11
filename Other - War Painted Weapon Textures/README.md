@@ -130,7 +130,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 2-i) Kill Covered: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-2-j) Merc Stained: GPAs captured, need textures to be exported;
+2-j) Merc Stained: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 2-k) Pizza Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
@@ -146,19 +146,19 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 3-b) Woodland Warrior Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-c) Wrapped Reviver Mk.II (TC): GPAs captured, need textures to be exported;
+3-c) Wrapped Reviver Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-d) Forest Fire Mk.II: GPAs captured, need textures to be exported;
+3-d) Forest Fire Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-e) Night Owl Mk.II: GPAs captured, need textures to be exported;
+3-e) Night Owl Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-f) Woodsy Widowmaker Mk.II: GPAs captured, need textures to be exported;
+3-f) Woodsy Widowmaker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-g) Autumn Mk.II: GPAs captured, need textures to be exported;
+3-g) Autumn Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-h) Plaid Potshotter Mk.II (TC): GPAs captured, need textures to be exported;
+3-h) Plaid Potshotter Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-i) Civic Duty Mk.II (TC): GPAs captured, need textures to be exported;
+3-i) Civic Duty Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 3-j) Civil Servant Mk.II (TC): GPAs captured, need textures to be exported.
 
