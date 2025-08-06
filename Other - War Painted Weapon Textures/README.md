@@ -84,7 +84,7 @@ War Paints:
 
 Note: War Paints will only be uploaded to the repository once the entire collection is done (textures converted to VTF, and exteriors moved to their proper folders). However, file names won't be renamed until ALL War Paints are complete (GPA frames taken, textures exported, converted DDS to VTF, and moved to proper folders). This is because I will be doing a mass rename later that will be much easier once everyting is done.
 
-1- The Jungle Jackpot Collection:
+1- The Jungle Jackpot Collection (All DDS exported):
 
 1-a) Anodized Aloha: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
@@ -98,7 +98,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 1-f) Mannana Peeled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-1-g) Park Pigmented: GPAs captured, need textures to be exported;
+1-g) Park Pigmented: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 1-h) Piña Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
@@ -110,7 +110,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 ---
 
-2- The Infernal Reward Collection:
+2- The Infernal Reward Collection (All DDS exported):
 
 2-a) Bank Rolled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
@@ -160,49 +160,53 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 3-i) Civic Duty Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-j) Civil Servant Mk.II (TC): GPAs captured, need textures to be exported.
+3-j) Civil Servant Mk.II (TC): GPAs captured.
 
 ---
 
-4- The Contract Campaigner Collection:
+4- The Contract Campaigner Collection (All DDS exported):
 
-4-a) Dead Reckoner Mk.II: Hasn't started;
+4-a) Dead Reckoner Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-4-b) Bovine Blazemaker Mk.II: Hasn't started;
+4-b) Bovine Blazemaker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-4-c) Backwoods Boomstick Mk.II: Hasn't started;
+4-c) Backwoods Boomstick Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-4-d) Masked Mender Mk.II: Hasn't started;
+4-d) Masked Mender Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-4-e) Macabre Web Mk.II: Hasn't started;
+4-e) Macabre Web Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
 
-4-f) Iron Wood Mk.II: Hasn't started;
+4-f) Iron Wood Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
 
-4-g) Nutcracker Mk.II: Hasn't started;
+4-g) Nutcracker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
 
-4-h) Smalltown Bringdown Mk.II (TC): Hasn't started.
+4-h) Smalltown Bringdown Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 ---
 
 5- The Saxton Select Collection:
 
-5-a) Dragon Slayer: GPAs captured, need textures to be exported.
+5-a) Dragon Slayer: Hasn't started;
 
 ---
 
 6- The Mann Co. Events Collection:
 
-6-a) Smissmas Sweater (TC): GPAs captured, need textures to be exported.
+6-a) Smissmas Sweater (TC): Hasn't started;
 
 ---
 
 7- The Winter 2017 Collection:
 
-7-a) Miami Element: Hasn't started;
+7-a) Miami Element: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
 
-7-b) Jazzy: Hasn't started;
+7-b) Jazzy: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-7-c) Mosaic: Hasn't started;
+7-c) Mosaic: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-d) Cosmic Calamity (TC): Hasn't started;
 
@@ -460,7 +464,9 @@ Removed jigglebones from certain weapons: Complete;
 
 Check if team-colored weapons have any differences on their VMTs. If the difference is noticeable enough, then, single-color War Paints will require previews on both teams. Currently, only Ubersaw was checked: Incomplete;
 
-Re-check what War Paints use the Grenade Launcher and Loose Cannon specific VMTs: Incomplete.
+Re-check what War Paints use the Grenade Launcher and Loose Cannon specific VMTs: Incomplete;
+
+Fix for Bazaar Bargain's .VMTs that were introduced in later patches (fix broken UV mapping on _lens.vmt): Incomplete.
 
 ---
 
