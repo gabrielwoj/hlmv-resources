@@ -140,7 +140,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 ---
 
-3- The Decorated Hero Collection:
+3- The Decorated Hero Collection (All DDS exported):
 
 3-a) Carpet Bomber Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
@@ -160,7 +160,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 3-i) Civic Duty Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-3-j) Civil Servant Mk.II (TC): GPAs captured.
+3-j) Civil Servant Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
 
 ---
 
@@ -189,13 +189,13 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 5- The Saxton Select Collection:
 
-5-a) Dragon Slayer: Hasn't started;
+5-a) Dragon Slayer: Hasn't started.
 
 ---
 
 6- The Mann Co. Events Collection:
 
-6-a) Smissmas Sweater (TC): Hasn't started;
+6-a) Smissmas Sweater (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
 
 ---
 
@@ -212,17 +212,17 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 7-e) Hana (TC): Hasn't started;
 
-7-f) Uranium: Hasn't started;
+7-f) Uranium: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-g) Neo Tokyo (TC): Hasn't started;
 
-7-h) Hazard Warning: Hasn't started;
+7-h) Hazard Warning: GPAs captured;
 
-7-i) Damascus & Mahogany: Hasn't started;
+7-i) Damascus & Mahogany: GPAs captured;
 
 7-j) Dovetailed (TC): Hasn't started;
 
-7-k) Alien Tech: Hasn't started;
+7-k) Alien Tech: GPAs captured;
 
 7-l) Cabin Fevered (TC): Hasn't started;
 
