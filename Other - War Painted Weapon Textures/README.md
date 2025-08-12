@@ -189,7 +189,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 5- The Saxton Select Collection:
 
-5-a) Dragon Slayer: Hasn't started.
+5-a) Dragon Slayer: GPAs captured;
 
 ---
 
