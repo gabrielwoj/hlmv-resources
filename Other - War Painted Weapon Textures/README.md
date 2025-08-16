@@ -84,95 +84,95 @@ War Paints:
 
 Note: War Paints will only be uploaded to the repository once the entire collection is done (textures converted to VTF, and exteriors moved to their proper folders). However, file names won't be renamed until ALL War Paints are complete (GPA frames taken, textures exported, converted DDS to VTF, and moved to proper folders). This is because I will be doing a mass rename later that will be much easier once everyting is done.
 
-1- The Jungle Jackpot Collection (All DDS exported):
+1- The Jungle Jackpot Collection (COMPLETE):
 
-1-a) Anodized Aloha: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-a) Anodized Aloha: Complete;
 
-1-b) Bamboo Brushed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-b) Bamboo Brushed: Complete;
 
-1-c) Croc Dusted: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-c) Croc Dusted: Complete;
 
-1-d) Leopard Printed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-d) Leopard Printed: Complete;
 
-1-e) Macaw Masked: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-e) Macaw Masked: Complete;
 
-1-f) Mannana Peeled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-f) Mannana Peeled: Complete;
 
-1-g) Park Pigmented: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-g) Park Pigmented: Complete;
 
-1-h) Piña Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-h) Piña Polished: Complete;
 
-1-i) Sax Waxed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-i) Sax Waxed: Complete;
 
-1-j) Tiger Buffed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+1-j) Tiger Buffed: Complete;
 
-1-k) Yeti Coated: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
+1-k) Yeti Coated: Complete.
 
 ---
 
 2- The Infernal Reward Collection (All DDS exported):
 
-2-a) Bank Rolled: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-a) Bank Rolled: Moved to correct path, just need to convert to VTF;
 
-2-b) Bloom Buffed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-b) Bloom Buffed (TC): Moved to correct path, just need to convert to VTF;
 
-2-c) Bonk Varnished (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-c) Bonk Varnished (TC): Moved to correct path, just need to convert to VTF;
 
-2-d) Cardboard Boxed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-d) Cardboard Boxed: Moved to correct path, just need to convert to VTF;
 
-2-e) Clover Camo'd: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-e) Clover Camo'd: Moved to correct path, just need to convert to VTF;
 
-2-f) Dream Piped (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-f) Dream Piped (TC): Moved to correct path, just need to convert to VTF;
 
-2-g) Fire Glazed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-g) Fire Glazed (TC): Moved to correct path, just need to convert to VTF;
 
-2-h) Freedom Wrapped: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-h) Freedom Wrapped: Moved to correct path, just need to convert to VTF;
 
-2-i) Kill Covered: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-i) Kill Covered: Moved to correct path, just need to convert to VTF;
 
-2-j) Merc Stained: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-j) Merc Stained: Moved to correct path, just need to convert to VTF;
 
-2-k) Pizza Polished: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-k) Pizza Polished: Moved to correct path, just need to convert to VTF;
 
-2-l) Quack Canvassed: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+2-l) Quack Canvassed: Moved to correct path, just need to convert to VTF;
 
-2-m) Star Crossed (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
+2-m) Star Crossed (TC): Moved to correct path, just need to convert to VTF.
 
 ---
 
 3- The Decorated Hero Collection (All DDS exported):
 
-3-a) Carpet Bomber Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-a) Carpet Bomber Mk.II (TC): Moved to correct path, just need to convert to VTF;
 
-3-b) Woodland Warrior Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-b) Woodland Warrior Mk.II: Moved to correct path, just need to convert to VTF;
 
-3-c) Wrapped Reviver Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-c) Wrapped Reviver Mk.II (TC): Moved to correct path, just need to convert to VTF;
 
-3-d) Forest Fire Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-d) Forest Fire Mk.II: Moved to correct path, just need to convert to VTF;
 
-3-e) Night Owl Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-e) Night Owl Mk.II: Hasn't started;
 
-3-f) Woodsy Widowmaker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-f) Woodsy Widowmaker Mk.II: Hasn't started;
 
-3-g) Autumn Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-g) Autumn Mk.II: Hasn't started;
 
-3-h) Plaid Potshotter Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-h) Plaid Potshotter Mk.II (TC): Hasn't started;
 
-3-i) Civic Duty Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-i) Civic Duty Mk.II (TC): Hasn't started;
 
-3-j) Civil Servant Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
+3-j) Civil Servant Mk.II (TC): Moved to correct path, just need to convert to VTF.
 
 ---
 
 4- The Contract Campaigner Collection (All DDS exported):
 
-4-a) Dead Reckoner Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+4-a) Dead Reckoner Mk.II: Moved to correct path, just need to convert to VTF;
 
-4-b) Bovine Blazemaker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+4-b) Bovine Blazemaker Mk.II: Moved to correct path, just need to convert to VTF;
 
-4-c) Backwoods Boomstick Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+4-c) Backwoods Boomstick Mk.II: Moved to correct path, just need to convert to VTF;
 
-4-d) Masked Mender Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+4-d) Masked Mender Mk.II: TMoved to correct path, just need to convert to VTF;
 
 4-e) Macabre Web Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 [GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
@@ -183,19 +183,19 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 4-g) Nutcracker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 [GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
 
-4-h) Smalltown Bringdown Mk.II (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+4-h) Smalltown Bringdown Mk.II (TC): Moved to correct path, just need to convert to VTF;
 
 ---
 
-5- The Saxton Select Collection:
+5- The Saxton Select Collection (All DDS exported):
 
-5-a) Dragon Slayer: GPAs captured;
+5-a) Dragon Slayer: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 ---
 
-6- The Mann Co. Events Collection:
+6- The Mann Co. Events Collection (All DDS exported):
 
-6-a) Smissmas Sweater (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF.
+6-a) Smissmas Sweater (TC): Moved to correct path, just need to convert to VTF;
 
 ---
 
@@ -208,7 +208,7 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 7-c) Mosaic: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-7-d) Cosmic Calamity (TC): Hasn't started;
+7-d) Cosmic Calamity (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-e) Hana (TC): Hasn't started;
 
@@ -216,19 +216,19 @@ Note: War Paints will only be uploaded to the repository once the entire collect
 
 7-g) Neo Tokyo (TC): Hasn't started;
 
-7-h) Hazard Warning: GPAs captured;
+7-h) Hazard Warning: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
-7-i) Damascus & Mahogany: GPAs captured;
+7-i) Damascus & Mahogany: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-j) Dovetailed (TC): Hasn't started;
 
-7-k) Alien Tech: GPAs captured;
+7-k) Alien Tech: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-l) Cabin Fevered (TC): Hasn't started;
 
 7-m) Polar Surprise (TC): Hasn't started;
 
-7-n) Bomber Soul: Hasn't started;
+7-n) Bomber Soul: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
 
 7-o) Geometrical Teams (TC): Hasn't started.
 
@@ -462,11 +462,15 @@ Organized folder tree: Complete;
 
 Removed jigglebones from certain weapons: Complete;
 
-Check if team-colored weapons have any differences on their VMTs. If the difference is noticeable enough, then, single-color War Paints will require previews on both teams. Currently, only Ubersaw was checked: Incomplete;
+Check if team-colored weapons have any differences on their VMTs. If the difference is noticeable enough, then, single-color War Paints will require previews on both teams: Complete;
+
+- The only weapon with a difference outside the Ubersaw is Detonator's projectile, but the weapon itself VMTs are identical on both teams.
 
 Re-check what War Paints use the Grenade Launcher and Loose Cannon specific VMTs: Incomplete;
 
-Fix for Bazaar Bargain's .VMTs that were introduced in later patches (fix broken UV mapping on _lens.vmt): Incomplete.
+Fix for Bazaar Bargain's .VMTs that were introduced in later patches (fix broken UV mapping on _lens.vmt): Complete
+
+- Valve simply got rid of material_override for the Bazaar Bargain's War Paints. Technically, the bug is still there, but no War Paint is using a material_override anymore.
 
 ---
 
