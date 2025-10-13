@@ -60,7 +60,7 @@ My progress on extraction will be as follows:
 
 Progress:
 
-Decorated: 100%
+Decorated: 100% / Uploaded
 
 1- The Teufort Collection: Complete;
 
@@ -84,201 +84,197 @@ War Paints:
 
 Note: War Paints will only be uploaded to the repository once the entire collection is done (textures converted to VTF, and exteriors moved to their proper folders). However, file names won't be renamed until ALL War Paints are complete (GPA frames taken, textures exported, converted DDS to VTF, and moved to proper folders). This is because I will be doing a mass rename later that will be much easier once everyting is done.
 
-1- The Jungle Jackpot Collection (COMPLETE):
+1- The Jungle Jackpot Collection (COMPLETE / Uploaded):
 
-1-a) Anodized Aloha: Complete;
+1-a) Anodized Aloha: Complete / Uploaded;
 
-1-b) Bamboo Brushed: Complete;
+1-b) Bamboo Brushed: Complete / Uploaded;
 
-1-c) Croc Dusted: Complete;
+1-c) Croc Dusted: Complete / Uploaded;
 
-1-d) Leopard Printed: Complete;
+1-d) Leopard Printed: Complete / Uploaded;
 
-1-e) Macaw Masked: Complete;
+1-e) Macaw Masked: Complete / Uploaded;
 
-1-f) Mannana Peeled: Complete;
+1-f) Mannana Peeled: Complete / Uploaded;
 
-1-g) Park Pigmented: Complete;
+1-g) Park Pigmented: Complete / Uploaded;
 
-1-h) Piña Polished: Complete;
+1-h) Piña Polished: Complete / Uploaded;
 
-1-i) Sax Waxed: Complete;
+1-i) Sax Waxed: Complete / Uploaded;
 
-1-j) Tiger Buffed: Complete;
+1-j) Tiger Buffed: Complete / Uploaded;
 
-1-k) Yeti Coated: Complete.
-
----
-
-2- The Infernal Reward Collection (All DDS exported):
-
-2-a) Bank Rolled: Moved to correct path, just need to convert to VTF;
-
-2-b) Bloom Buffed (TC): Moved to correct path, just need to convert to VTF;
-
-2-c) Bonk Varnished (TC): Moved to correct path, just need to convert to VTF;
-
-2-d) Cardboard Boxed: Moved to correct path, just need to convert to VTF;
-
-2-e) Clover Camo'd: Moved to correct path, just need to convert to VTF;
-
-2-f) Dream Piped (TC): Moved to correct path, just need to convert to VTF;
-
-2-g) Fire Glazed (TC): Moved to correct path, just need to convert to VTF;
-
-2-h) Freedom Wrapped: Moved to correct path, just need to convert to VTF;
-
-2-i) Kill Covered: Moved to correct path, just need to convert to VTF;
-
-2-j) Merc Stained: Moved to correct path, just need to convert to VTF;
-
-2-k) Pizza Polished: Moved to correct path, just need to convert to VTF;
-
-2-l) Quack Canvassed: Moved to correct path, just need to convert to VTF;
-
-2-m) Star Crossed (TC): Moved to correct path, just need to convert to VTF.
+1-k) Yeti Coated: Complete / Uploaded.
 
 ---
 
-3- The Decorated Hero Collection (All DDS exported):
+2- The Infernal Reward Collection (COMPLETE / Uploaded):
 
-3-a) Carpet Bomber Mk.II (TC): Moved to correct path, just need to convert to VTF;
+2-a) Bank Rolled: Complete / Uploaded;
 
-3-b) Woodland Warrior Mk.II: Moved to correct path, just need to convert to VTF;
+2-b) Bloom Buffed (TC): Complete;
 
-3-c) Wrapped Reviver Mk.II (TC): Moved to correct path, just need to convert to VTF;
+2-c) Bonk Varnished (TC): Complete;
 
-3-d) Forest Fire Mk.II: Moved to correct path, just need to convert to VTF;
+2-d) Cardboard Boxed: Complete / Uploaded;
 
-3-e) Night Owl Mk.II: Hasn't started;
+2-e) Clover Camo'd: Complete / Uploaded;
 
-3-f) Woodsy Widowmaker Mk.II: Hasn't started;
+2-f) Dream Piped (TC): Complete / Uploaded;
 
-3-g) Autumn Mk.II: Hasn't started;
+2-g) Fire Glazed (TC): Complete / Uploaded;
 
-3-h) Plaid Potshotter Mk.II (TC): Hasn't started;
+2-h) Freedom Wrapped: Complete / Uploaded;
 
-3-i) Civic Duty Mk.II (TC): Hasn't started;
+2-i) Kill Covered: Complete / Uploaded;
 
-3-j) Civil Servant Mk.II (TC): Moved to correct path, just need to convert to VTF.
+2-j) Merc Stained: Complete / Uploaded;
 
----
+2-k) Pizza Polished: Complete / Uploaded;
 
-4- The Contract Campaigner Collection (All DDS exported):
+2-l) Quack Canvassed: Complete / Uploaded;
 
-4-a) Dead Reckoner Mk.II: Moved to correct path, just need to convert to VTF;
-
-4-b) Bovine Blazemaker Mk.II: Moved to correct path, just need to convert to VTF;
-
-4-c) Backwoods Boomstick Mk.II: Moved to correct path, just need to convert to VTF;
-
-4-d) Masked Mender Mk.II: TMoved to correct path, just need to convert to VTF;
-
-4-e) Macabre Web Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
-
-4-f) Iron Wood Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
-
-4-g) Nutcracker Mk.II: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
-
-4-h) Smalltown Bringdown Mk.II (TC): Moved to correct path, just need to convert to VTF;
+2-m) Star Crossed (TC): Complete / Uploaded.
 
 ---
 
-5- The Saxton Select Collection (All DDS exported):
+3- The Decorated Hero Collection (COMPLETE / Uploaded)):
 
-5-a) Dragon Slayer: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-a) Carpet Bomber Mk.II (TC): Complete / Uploaded;
 
----
+3-b) Woodland Warrior Mk.II: Complete / Uploaded;
 
-6- The Mann Co. Events Collection (All DDS exported):
+3-c) Wrapped Reviver Mk.II (TC): Complete / Uploaded;
 
-6-a) Smissmas Sweater (TC): Moved to correct path, just need to convert to VTF;
+3-d) Forest Fire Mk.II: Complete / Uploaded;
 
----
+3-e) Night Owl Mk.II: Complete / Uploaded;
 
-7- The Winter 2017 Collection:
+3-f) Woodsy Widowmaker Mk.II: Complete / Uploaded;
 
-7-a) Miami Element: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-[GPAs done after the Summer 2025 Patch, Übersaw folders should be now 47 and 48, while War Paint should be 44, Winger should be 45 and Wrench should be 46]
+3-g) Autumn Mk.II: Complete / Uploaded;
 
-7-b) Jazzy: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-h) Plaid Potshotter Mk.II (TC): Complete / Uploaded;
 
-7-c) Mosaic: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
+3-i) Civic Duty Mk.II (TC): Complete / Uploaded;
 
-7-d) Cosmic Calamity (TC): Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-e) Hana (TC): Hasn't started;
-
-7-f) Uranium: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-g) Neo Tokyo (TC): Hasn't started;
-
-7-h) Hazard Warning: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-i) Damascus & Mahogany: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-j) Dovetailed (TC): Hasn't started;
-
-7-k) Alien Tech: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-l) Cabin Fevered (TC): Hasn't started;
-
-7-m) Polar Surprise (TC): Hasn't started;
-
-7-n) Bomber Soul: Textures exported, need to move DDS files to appropriate folders, then convert them to VTF;
-
-7-o) Geometrical Teams (TC): Hasn't started.
+3-j) Civil Servant Mk.II (TC): Complete / Uploaded.
 
 ---
 
-8- The Scream Fortress X Collection:
+4- The Contract Campaigner Collection (COMPLETE / Uploaded)):
 
-8-a) Electroshocked (TC): Hasn't started;
+4-a) Dead Reckoner Mk.II: Complete / Uploaded;
 
-8-b) Tumor Toasted: Hasn't started;
+4-b) Bovine Blazemaker Mk.II: Complete / Uploaded;
 
-8-c) Ghost Town: Hasn't started;
+4-c) Backwoods Boomstick Mk.II: Complete / Uploaded;
 
-8-d) Skull Study: Hasn't started;
+4-d) Masked Mender Mk.II: Complete / Uploaded;
 
-8-e) Spectral Shimmered (TC): Hasn't started;
+4-e) Macabre Web Mk.II: Complete / Uploaded;
 
-8-f) Calavera Canvas (TC): Hasn't started;
+4-f) Iron Wood Mk.II: Complete / Uploaded;
 
-8-g) Spirit of Halloween: Hasn't started;
+4-g) Nutcracker Mk.II: Complete / Uploaded;
 
-8-h) Horror Holiday: Hasn't started;
+4-h) Smalltown Bringdown Mk.II (TC): Complete / Uploaded.
 
-8-i) Totally Boned: Hasn't started;
+---
 
-8-j) Haunted Ghosts: Hasn't started.
+5- The Saxton Select Collection (COMPLETE / Uploaded)):
+
+5-a) Dragon Slayer: Complete / Uploaded.
+
+---
+
+6- The Mann Co. Events Collection (COMPLETE / Uploaded)):
+
+6-a) Smissmas Sweater (TC): Complete / Uploaded;.
+
+---
+
+7- The Winter 2017 Collection (COMPLETE / Uploaded):
+
+7-a) Miami Element: Complete / Uploaded;
+
+7-b) Jazzy: Complete / Uploaded;
+
+7-c) Mosaic: Complete / Uploaded;
+
+7-d) Cosmic Calamity (TC): Complete / Uploaded;
+
+7-e) Hana (TC): Complete / Uploaded;
+
+7-f) Uranium: Complete / Uploaded;
+
+7-g) Neo Tokyo (TC): Complete / Uploaded;
+
+7-h) Hazard Warning: Complete / Uploaded;
+
+7-i) Damascus & Mahogany: Complete / Uploaded;
+
+7-j) Dovetailed (TC): Complete / Uploaded;
+
+7-k) Alien Tech: Complete / Uploaded;
+
+7-l) Cabin Fevered (TC): Complete / Uploaded;
+
+7-m) Polar Surprise (TC): Complete / Uploaded;
+
+7-n) Bomber Soul: Complete / Uploaded;
+
+7-o) Geometrical Teams (TC): Complete / Uploaded.
+
+---
+
+8- The Scream Fortress X Collection (COMPLETE / Uploaded):
+
+8-a) Electroshocked (TC): Complete / Uploaded;
+
+8-b) Tumor Toasted: Complete / Uploaded;
+
+8-c) Ghost Town: Complete / Uploaded;
+
+8-d) Skull Study: Complete / Uploaded;
+
+8-e) Spectral Shimmered (TC): Complete / Uploaded;
+
+8-f) Calavera Canvas (TC): Complete / Uploaded;
+
+8-g) Spirit of Halloween: Complete / Uploaded;
+
+8-h) Horror Holiday: Complete / Uploaded;
+
+8-i) Totally Boned: Complete / Uploaded;
+
+8-j) Haunted Ghosts: Complete / Uploaded.
 
 ---
 
 9- Winter 2019 Collection:
 
-9-a) Alpine: Hasn't started;
+9-a) Alpine: DDS taken;
 
-9-b) Frost Ornamented (TC): Hasn't started;
+9-b) Frost Ornamented (TC): DDS taken;
 
-9-c) Gift Wrapped (TC): Hasn't started;
+9-c) Gift Wrapped (TC): DDS taken;
 
-9-d) Igloo: Hasn't started;
+9-d) Igloo: DDS taken;
 
-9-e) Seriously Snowed (TC): Hasn't started;
+9-e) Seriously Snowed (TC): DDS taken;
 
-9-f) Sleighin' Style (TC): Hasn't started;
+9-f) Sleighin' Style (TC): DDS taken;
 
-9-g) Smissmas Camo: Hasn't started;
+9-g) Smissmas Camo: DDS taken;
 
-9-h) Smissmas Village (TC): Hasn't started;
+9-h) Smissmas Village (TC): DDS taken;
 
-9-i) Snow Covered (TC): Hasn't started;
+9-i) Snow Covered (TC): DDS taken;
 
-9-j) Winterland Wrapped (TC): Hasn't started.
+9-j) Winterland Wrapped (TC): DDS taken.
 
 ---
 
