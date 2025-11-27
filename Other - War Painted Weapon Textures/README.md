@@ -4,6 +4,14 @@ Includes .dds files for War Painted / Decorated Weapons of each grade and each w
 
 ---
 
+Usage Permission and Credit Atribution:
+
+Credit is not needed when it comes to Workshop submissions, projects related to TF2, Youtube thumbnails, Steam avatars, sprays, usage on the Official Wiki, etc.. However, credit IS required if the textures are used in some sort of mod that replaces the default look of a weapon with one of the war paints (like instead of the Scattergun being its default grey-ish color, it utilizes one of the war painted textures).
+
+Mods released on Gamebanana, Nexus Mods, ModDB, etc., does require credit in somewhere for utilizing the texture that made the mod possible in the first place. This also includes Workshop submissions for games like Garry's Mod and Source Filmmaker. Also, please also credit the original creator of said War Paint!
+
+---
+
 Instructions:
 
 There are two folders, one for "Decorated" weapons and another for "War Painted" weapons. Inside either one of those folders contains a collection. A collection consists of all available weapons available to that "theming".
