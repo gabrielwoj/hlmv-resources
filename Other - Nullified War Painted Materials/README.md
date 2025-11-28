@@ -1,0 +1,3 @@
+This is a collection of all custom materials utilized in Decorated / War Painted weapons, with all its contents nullified. This can be helpful to determine what custom material is utilized in-game if the War Paint shows up as completely grey from the War Paints menu.
+
+Of note that Macaw Masked's c_bazaar_sniper.vmt and paintkit_tool.vmt are unused. paintkit_tool.vmt was never used at all, while c_bazaar_sniper.vmt was used in some cases where community-creators accidentally kept as is (which causes an UV Mapping error on the scope).
